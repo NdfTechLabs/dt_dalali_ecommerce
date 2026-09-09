@@ -1,7 +1,7 @@
 app_name = "dt_dalali_ecommerce"
 app_title = "Dalali E-Commerce"
 app_publisher = "NDF Technology Labs Solutions LTD"
-app_description = "Ecommerce webshop app for dalali merchants"
+app_description = "Webshop E-commerce website for Dalali Merchants"
 app_email = "info@ndftechlabs.com"
 app_license = "agpl-3.0"
 

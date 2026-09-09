@@ -3,7 +3,7 @@ name = "dt_dalali_ecommerce"
 authors = [
     { name = "NDF Technology Labs Solutions LTD", email = "info@ndftechlabs.com"}
 ]
-description = "Ecommerce webshop app for dalali merchants"
+description = "Webshop E-commerce website for Dalali Merchants"
 requires-python = ">=3.14"
 readme = "README.md"
 dynamic = ["version"]
