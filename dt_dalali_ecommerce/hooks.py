@@ -8,7 +8,7 @@ app_license = "agpl-3.0"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["webshop", "dt_ecommerce"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -31,6 +31,17 @@ app_license = "agpl-3.0"
 # include js, css files in header of web template
 # web_include_css = "/assets/dt_dalali_ecommerce/css/dt_dalali_ecommerce.css"
 # web_include_js = "/assets/dt_dalali_ecommerce/js/dt_dalali_ecommerce.js"
+
+_V = "?v=1.0"
+
+web_include_css = [
+    "/assets/dt_dalali_ecommerce/css/theme_dalali.css" + _V,
+]
+
+web_include_js = [
+    "/assets/dt_dalali_ecommerce/js/dalali.js" + _V,
+    "/assets/dt_dalali_ecommerce/js/components/promo_bar.js" + _V,
+]
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "dt_dalali_ecommerce/public/scss/website"
