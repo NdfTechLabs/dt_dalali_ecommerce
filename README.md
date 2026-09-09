@@ -1,6 +1,6 @@
-### Dalali E-Commerce
+### Dalali E-commerce
 
-Webshop E-commerce website for Dalali Merchants
+Webshop E-commerce website for dalali
 
 ### Installation
 

@@ -1,7 +1,7 @@
 app_name = "dt_dalali_ecommerce"
-app_title = "Dalali E-Commerce"
+app_title = "Dalali E-commerce"
 app_publisher = "NDF Technology Labs Solutions LTD"
-app_description = "Webshop E-commerce website for Dalali Merchants"
+app_description = "Webshop E-commerce website for dalali"
 app_email = "info@ndftechlabs.com"
 app_license = "agpl-3.0"
 
@@ -15,7 +15,7 @@ app_license = "agpl-3.0"
 # 	{
 # 		"name": "dt_dalali_ecommerce",
 # 		"logo": "/assets/dt_dalali_ecommerce/logo.png",
-# 		"title": "Dalali E-Commerce",
+# 		"title": "Dalali E-commerce",
 # 		"route": "/dt_dalali_ecommerce",
 # 		"has_permission": "dt_dalali_ecommerce.api.permission.has_app_permission"
 # 	}
