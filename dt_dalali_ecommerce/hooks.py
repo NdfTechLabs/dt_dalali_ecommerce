@@ -32,7 +32,7 @@ required_apps = ["webshop", "dt_ecommerce"]
 # web_include_css = "/assets/dt_dalali_ecommerce/css/dt_dalali_ecommerce.css"
 # web_include_js = "/assets/dt_dalali_ecommerce/js/dt_dalali_ecommerce.js"
 
-_V = "?v=1.0"
+_V = "?v=1.1"
 
 web_include_css = [
     "/assets/dt_dalali_ecommerce/css/theme_dalali.css" + _V,
