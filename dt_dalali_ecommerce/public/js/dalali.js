@@ -121,14 +121,10 @@ function injectUnitCaseToggle(itemCode, bottlePrice, caseSize, tiers) {
 	let currentQty = 1; // tracks bottle(1) vs case(N) across toggle clicks
 	const casePrice = calcCasePrice(bottlePrice, caseSize, tiers);
 	const currency  = getCurrencySymbol();
-
-	const toggleWrap = document.createElement("div");
-	toggleWrap.id = "dalali-wholesale-block";
-	toggleWrap.innerHTML = `
-		<div class="dalali-unit-toggle">
-			<button class="dalali-toggle-btn active" data-mode="bottle">${__("Bottle")}</button>
-			<button class="dalali-toggle-btn" data-mode="case">${__("Case of {0}", [caseSize])}</button>
-		</div>
+	const inStock = 1 ? window.shopping_cart?.product_info?.in_stock==1 && window.cart_settings.show_stock_availability==1 : 0;
+	const contactUs = window.cart_settings?.show_contact_us_button
+	
+	const prodInfo = `
 		<div class="dalali-price-block">
 			<div class="dalali-price-main" id="dalali-price-display">
 				${currency} ${bottlePrice > 0 ? fmtNumber(bottlePrice) : "—"}
@@ -137,8 +133,12 @@ function injectUnitCaseToggle(itemCode, bottlePrice, caseSize, tiers) {
 			${tiers.length ? `<button class="dalali-tier-link" id="dalali-tier-btn">
 				🔖 ${__("View volume price breaks")}
 			</button>` : ""}
+			<div class="dalali-stock-info-block">
+			</div>
 		</div>
-		<div class="dalali-pdp-cta">
+	`
+
+	const addToCartBtn = `
 			<button class="dalali-pdp-add-btn" id="dalali-add-to-cart" type="button">
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 					stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -146,53 +146,107 @@ function injectUnitCaseToggle(itemCode, bottlePrice, caseSize, tiers) {
 					<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
 				</svg>
 				${__("Add to Cart")}
-			</button>
-			<button class="dalali-pdp-buy-btn" id="dalali-buy-now" type="button">
-				${__("Buy Now")}
+			</button>`
+
+		const goToCartBtn = `
+			<button class="dalali-pdp-go-btn no-site" id="dalali-pdp-go-btn" type="button">
+					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+						stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<polyline points="20 6 9 17 4 12"/>
+					</svg>
+					${__("Go to Cart")}
+			</button>`
+			const contactUsBtn =`
+			<button class="dalali-pdp-buy-btn btn-inquiry" id="dalali-buy-now" type="button" data-item-code="${ window.item_name }">
+				${__("Contact Us")}
 				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
 					stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 					<path d="M5 12h14M12 5l7 7-7 7"/>
 				</svg>
-			</button>
-		</div>`;
+			</button>`
 
-	cartRow.parentNode.insertBefore(toggleWrap, cartRow);
+		dalaliPdpCta='<div class="dalali-pdp-cta">'
 
-	// Wire toggle — updates price display and currentQty closure var
-	toggleWrap.querySelectorAll(".dalali-toggle-btn").forEach((btn) => {
-		btn.addEventListener("click", function () {
-			toggleWrap.querySelectorAll(".dalali-toggle-btn").forEach((b) => b.classList.remove("active"));
-			this.classList.add("active");
-			const mode = this.dataset.mode;
-			if (mode === "case") {
-				currentQty = caseSize;
-				document.getElementById("dalali-price-display").textContent =
-					`${currency} ${fmtNumber(casePrice)}`;
-				document.getElementById("dalali-price-sub").textContent =
-					__("per case of {0} bottles", [caseSize]);
-			} else {
-				currentQty = 1;
-				document.getElementById("dalali-price-display").textContent =
-					`${currency} ${bottlePrice > 0 ? fmtNumber(bottlePrice) : "—"}`;
-				document.getElementById("dalali-price-sub").textContent = __("per bottle");
-			}
-			updateCartQty(currentQty);
+		if(inStock){
+			dalaliPdpCta+=addToCartBtn
+			dalaliPdpCta+=goToCartBtn
+		}
+		if(contactUs){
+			dalaliPdpCta+=contactUsBtn
+		}
+		dalaliPdpCta+="</div>"
+
+		dalaliWholesaleBlock = `
+		<div class="dalali-unit-toggle">
+			<button class="dalali-toggle-btn active" data-mode="bottle">${__("Bottle")}</button>
+			<button class="dalali-toggle-btn" data-mode="case">${__("Case of {0}", [caseSize])}</button>
+		</div>`
+
+		dalaliWholesaleBlock+=prodInfo
+		dalaliWholesaleBlock+=dalaliPdpCta
+
+	const toggleWrap = document.createElement("div");
+	toggleWrap.id = "dalali-wholesale-block";
+	toggleWrap.innerHTML = dalaliWholesaleBlock;
+
+		cartRow.parentNode.insertBefore(toggleWrap, cartRow);
+
+		const stockInfoBlock = document.querySelector(".dalali-stock-info-block");
+		if (stockInfoBlock && window.cart_settings?.show_stock_availability) {
+						let html = "";
+
+						if (inStock) {
+										html = `
+														<span class="dalali-stock-available">
+																		Available
+														</span>
+										`;
+						} else {
+										html = `
+														<span class="dalali-stock-unavailable">
+																		Out of stock
+														</span>
+										`;
+						}
+
+						stockInfoBlock.innerHTML = html;
+		}
+
+		// Wire toggle — updates price display and currentQty closure var
+		toggleWrap.querySelectorAll(".dalali-toggle-btn").forEach((btn) => {
+			btn.addEventListener("click", function () {
+				toggleWrap.querySelectorAll(".dalali-toggle-btn").forEach((b) => b.classList.remove("active"));
+				this.classList.add("active");
+				const mode = this.dataset.mode;
+				if (mode === "case") {
+					currentQty = caseSize;
+					document.getElementById("dalali-price-display").textContent =
+						`${currency} ${fmtNumber(casePrice)}`;
+					document.getElementById("dalali-price-sub").textContent =
+						__("per case of {0} bottles", [caseSize]);
+				} else {
+					currentQty = 1;
+					document.getElementById("dalali-price-display").textContent =
+						`${currency} ${bottlePrice > 0 ? fmtNumber(bottlePrice) : "—"}`;
+					document.getElementById("dalali-price-sub").textContent = __("per bottle");
+				}
+				updateCartQty(currentQty);
+			});
 		});
-	});
 
-	// Tier modal trigger
-	const tierBtn = document.getElementById("dalali-tier-btn");
-	if (tierBtn) tierBtn.addEventListener("click", () => openTierModal(tiers, bottlePrice, caseSize));
+		// Tier modal trigger
+		const tierBtn = document.getElementById("dalali-tier-btn");
+		if (tierBtn) tierBtn.addEventListener("click", () => openTierModal(tiers, bottlePrice, caseSize));
 
-	// CTA: Add to Cart
-	document.getElementById("dalali-add-to-cart").addEventListener("click", function () {
-		pdpCartAction(itemCode, currentQty, false, this);
-	});
+		// CTA: Add to Cart
+		if(inStock){
+			document.getElementById("dalali-add-to-cart").addEventListener("click", function () {
+				pdpCartAction(itemCode, currentQty, false, this);
+			});
+		}
 
-	// CTA: Buy Now → add then redirect to /cart
-	document.getElementById("dalali-buy-now").addEventListener("click", function () {
-		pdpCartAction(itemCode, currentQty, true, this);
-	});
+		// CTA: Contact Us → opens contact us form
+		bindAction()
 }
 
 /* Shared cart action used by both PDP CTA buttons */
@@ -225,6 +279,12 @@ function pdpCartAction(itemCode, qty, buyNow, btn) {
 				setTimeout(function () {
 					btn.innerHTML = origHTML;
 					btn.classList.remove("added");
+					btn.classList.add("no-site");
+					goToCartBtn=document.getElementById('dalali-pdp-go-btn')
+					goToCartBtn.addEventListener("click",()=>{
+							window.location.href = "/cart";
+					})
+					goToCartBtn.classList.remove('no-site')
 				}, 1800);
 			}
 		},

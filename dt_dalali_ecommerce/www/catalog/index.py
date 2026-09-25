@@ -1,5 +1,5 @@
 """
-dt_ecommerce.www.catalog
+dt_dalali_ecommerce.www.catalog
 Category Listing & Filter Page — B2B left-sidebar + 5-column dense grid.
 
 URL: /catalog
@@ -16,6 +16,8 @@ Query params (all optional, all combinable):
     brands          — repeatable: ?brands=Jameson&brands=Absolut
     page            — pagination page number (default 1)
 """
+
+import json
 
 import frappe
 from frappe.utils import flt, cint
@@ -354,5 +356,4 @@ def get_context(context):
 
     # ── expose base_params to template (for JS data attribute) ───────────────
     context.base_params = base_params
-
     return context

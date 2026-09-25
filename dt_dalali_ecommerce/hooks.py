@@ -32,7 +32,7 @@ required_apps = ["webshop", "dt_ecommerce"]
 # web_include_css = "/assets/dt_dalali_ecommerce/css/dt_dalali_ecommerce.css"
 # web_include_js = "/assets/dt_dalali_ecommerce/js/dt_dalali_ecommerce.js"
 
-_V = "?v=1.2"
+_V = "?v=1.3"
 
 web_include_css = [
     "/assets/dt_dalali_ecommerce/css/theme_dalali.css" + _V,
@@ -41,6 +41,7 @@ web_include_css = [
 web_include_js = [
     "/assets/dt_dalali_ecommerce/js/dalali.js" + _V,
     "/assets/dt_dalali_ecommerce/js/components/promo_bar.js" + _V,
+    "/assets/dt_dalali_ecommerce/js/components/item_inquiry.js" + _V,
 ]
 
 # include custom scss in every website theme (without file extension ".scss")

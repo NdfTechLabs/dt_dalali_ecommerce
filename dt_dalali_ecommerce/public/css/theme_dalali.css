@@ -99,7 +99,7 @@ body {
 .dt-search-wrapper {
   background: rgba(255, 255, 255, 0.08) !important;
   border-color: rgba(184, 144, 42, 0.35) !important;
-  color: #F0E8D8;
+  color: var(--color-text);
 }
 
 .dt-search-wrapper:focus-within {
@@ -107,10 +107,15 @@ body {
   border-color: var(--dalali-gold) !important;
   box-shadow: 0 0 0 3px rgba(184, 144, 42, 0.2) !important;
 }
-
-.dt-search {
-  color: #F0E8D8 !important;
+.dt-search{
+    color: #F0E8D8 !important;
 }
+@media (max-width: 900px) {
+  .dt-search {
+    color: var(--dalali-ink) !important;
+  }
+}
+
 
 .dt-search::placeholder {
   color: rgba(240, 232, 216, 0.45);
@@ -207,6 +212,7 @@ body {
   border: 1px solid rgba(184, 144, 42, 0.35);
   border-radius: 8px;
   padding: 6px 6px 6px 16px;
+  flex-wrap: wrap;
 }
 
 .dalali-hero-search input {
@@ -230,6 +236,11 @@ body {
   padding: 8px 15x;
   border-radius: 6px;
   white-space: nowrap;
+}
+@media (max-width: 600px){
+  .dalali-hero-search .btn {
+    width: 100%;
+  }
 }
 
 /* ── Horizontal Filter Bar ── */
@@ -2959,7 +2970,8 @@ a.dalali-page-btn:hover {
 }
 
 .dalali-pdp-add-btn,
-.dalali-pdp-buy-btn {
+.dalali-pdp-buy-btn,
+.dalali-pdp-go-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2976,17 +2988,19 @@ a.dalali-page-btn:hover {
 }
 
 /* Add to Cart — outlined claret */
-.dalali-pdp-add-btn {
+.dalali-pdp-add-btn,
+.dalali-pdp-go-btn {
   flex: 1;
   background: transparent;
   color: var(--dalali-claret);
   border: 2px solid var(--dalali-claret);
 }
-.dalali-pdp-add-btn:hover {
+.dalali-pdp-add-btn:hover,.dalali-pdp-go-btn:hover {
   background: var(--dalali-claret);
   color: #fff;
 }
-.dalali-pdp-add-btn:active { transform: scale(0.97); }
+.dalali-pdp-add-btn:active,
+.dalali-pdp-go-btn:active { transform: scale(0.97); }
 .dalali-pdp-add-btn.added {
   background: #2e7d32;
   color: #fff;
@@ -2999,6 +3013,7 @@ a.dalali-page-btn:hover {
   background: var(--dalali-claret);
   color: #fff;
   border: 2px solid var(--dalali-claret);
+  max-width: 200px;
 }
 .dalali-pdp-buy-btn:hover {
   background: var(--dalali-claret-d);
@@ -3232,4 +3247,19 @@ a.dalali-page-btn:hover {
 .dt-main-menu .dt-dropdown-item--danger:hover {
   background: rgba(248, 113, 113, 0.12);
   color: #FCA5A5;
+}
+
+.dalali-stock-available,.dalali-stock-unavailable{
+  font-size: small;
+  font-style: italic;
+}
+.dalali-stock-available{
+  color: #15803d;
+}
+.dalali-stock-unavailable{
+  color: #e5620a;
+}
+
+.no-site{
+  display: none
 }
