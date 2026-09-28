@@ -1,453 +1,106 @@
-<!-- Dalali Winehouse Privacy, Cookie & Return/Refund Policy
-     Converted from Ionic/Angular markup for use in an ERPNext/Webshop Web Page.
--->
-
 {% extends "templates/web.html" %}
-{% block title %}{{ _('Privacy policy and Terms and Conditions') }}{% endblock %}
-
+{% block title %}{{ _('Terms & Conditions') }}{% endblock %}
 {% block head_include %}
 
 <style>
-  .dalali-policy {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px 16px 48px;
-    color: #333;
-    line-height: 1.7;
-    font-size: 15px;
-  }
-
-  .dalali-policy .policy-section {
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    background: #fff;
-    overflow: hidden;
-  }
-
-  .dalali-policy .policy-section > summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 16px 48px 16px 18px;
-    background: #f8f9fa;
-    font-weight: 600;
-    color: #212529;
-    position: relative;
-    user-select: none;
-  }
-
-  .dalali-policy .policy-section > summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .dalali-policy .policy-section > summary::after {
-    content: "+";
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 22px;
-    font-weight: 400;
-    color: #6c757d;
-  }
-
-  .dalali-policy .policy-section[open] > summary::after {
-    content: "−";
-  }
-
-  .dalali-policy .policy-section[open] > summary {
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .dalali-policy .policy-content {
-    padding: 20px 18px;
-  }
-
-  .dalali-policy p {
-    margin: 0 0 16px;
-  }
-
-  .dalali-policy ul {
-    margin: 0 0 16px;
-    padding-left: 24px;
-  }
-
-  .dalali-policy li {
-    margin-bottom: 8px;
-  }
-
-  .dalali-policy h4 {
-    margin: 24px 0 10px;
-    font-size: 18px;
-    color: #212529;
-  }
-
-  .dalali-policy a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  @media (max-width: 576px) {
-    .dalali-policy {
-      padding: 12px 10px 32px;
-      font-size: 14px;
-    }
-
-    .dalali-policy .policy-content {
-      padding: 16px 14px;
-    }
-
-    .dalali-policy .policy-section > summary {
-      padding: 14px 42px 14px 14px;
-    }
-  }
+  .dalali-policy{max-width:1000px;margin:0 auto;padding:24px 16px 56px;color:#333;line-height:1.7;font-size:15px}
+  .dalali-policy .policy-header{margin-bottom:28px}
+  .dalali-policy h1{font-size:32px;line-height:1.2;margin:0 0 10px;color:#212529}
+  .dalali-policy h2{font-size:22px;margin:30px 0 12px;color:#212529}
+  .dalali-policy h3{font-size:18px;margin:24px 0 10px;color:#212529}
+  .dalali-policy p{margin:0 0 16px}
+  .dalali-policy ul,.dalali-policy ol{margin:0 0 18px;padding-left:25px}
+  .dalali-policy li{margin-bottom:8px}
+  .dalali-policy .notice{padding:16px 18px;border:1px solid #e5e7eb;border-radius:8px;background:#f8f9fa;margin:18px 0}
+  .dalali-policy .policy-section{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px;background:#fff;overflow:hidden}
+  .dalali-policy .policy-section>summary{cursor:pointer;list-style:none;padding:16px 48px 16px 18px;background:#f8f9fa;font-weight:600;color:#212529;position:relative;user-select:none}
+  .dalali-policy .policy-section>summary::-webkit-details-marker{display:none}
+  .dalali-policy .policy-section>summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;color:#6c757d}
+  .dalali-policy .policy-section[open]>summary::after{content:"−"}
+  .dalali-policy .policy-section[open]>summary{border-bottom:1px solid #e5e7eb}
+  .dalali-policy .policy-content{padding:20px 18px}
+  .dalali-policy a{color:inherit;text-decoration:underline}
+  .dalali-policy table{width:100%;border-collapse:collapse;margin:16px 0}
+  .dalali-policy th,.dalali-policy td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+  .dalali-policy th{background:#f8f9fa}
+  .dalali-policy .muted{color:#666;font-size:14px}
+  @media(max-width:576px){.dalali-policy{padding:16px 10px 40px;font-size:14px}.dalali-policy h1{font-size:27px}.dalali-policy .policy-content{padding:16px 14px}.dalali-policy .policy-section>summary{padding:14px 42px 14px 14px}}
 </style>
+
 {% endblock %}
-
 {% block page_content %}
-
 <div class="dalali-policy">
-<details class="policy-section">
-  <summary>Introduction</summary>
-  <div class="policy-content">
-        This Privacy and Cookie Notice applies to personal information collected by or on behalf of a company within the Dalali Winehouse LTD. It sets out what we do with your personal information, how we keep it secure and explains the rights that you have in relation to your personal information.
+  <div class="policy-header">
+    <h1>Terms & Conditions</h1>
+    <p class="muted">Dalali Winehouse Ltd · Effective date: 28 September 2026 · Last updated: 28 September 2026</p>
+  </div>
 
-        Particularly interested in how we use cookies? Please see the dedicated Cookie section of this notice.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>Are you of legal purchase age?</summary>
-  <div class="policy-content">
-        You must not provide us with your personal information if you are not of legal age to purchase alcohol in the jurisdiction in which you reside and (if different) in the jurisdiction in which you are accessing the website or app.
+  <div class="notice"><strong>These Terms & Conditions govern use of the Dalali Winehouse website, customer accounts and online purchases.</strong> By using the website or placing an order, you agree to these terms to the extent permitted by applicable law.</div>
 
-        We do not intend to collect personal information from any individuals under the legal purchase age, or to market alcoholic beverages to anyone under the legal purchase age.
+  <details class="policy-section" open><summary>1. About these Terms</summary><div class="policy-content">
+    <p>Dalali Winehouse Ltd (“Dalali”, “we”, “us” or “our”) operates <a href="https://dalaliwinehouseltd.com">dalaliwinehouseltd.com</a>. These Terms & Conditions apply to your use of the website, account features, online ordering and related services.</p>
+    <p>Our Privacy Policy explains how personal information is handled. Our Customer Service Policy and Refund & Returns Policy provide additional service-specific information.</p>
+  </div></details>
 
-        If we receive notice or believe that someone under the legal purchase age has provided us with personal information we will make every reasonable effort to remove such personal information from our records.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>What types of personal information do we collect?</summary>
-  <div class="policy-content">
-        Personal information is information about an identifiable individual, as defined by applicable law. The personal information we collect includes:
-        <ul>
-<li>information you provide to us; and</li>
-          <li>information we automatically collect/generate or information we obtain from third parties.</li>
-        </ul>
-We have set out below more details regarding these types of personal information:
+  <details class="policy-section"><summary>2. Eligibility and legal purchase age</summary><div class="policy-content">
+    <p>You may use the website only where you are legally permitted to do so. Alcohol may only be purchased, received and possessed by persons who meet the legal requirements applicable to the transaction and delivery location.</p>
+    <p>We may require age or identity verification before completing or delivering an order where required by law, our payment providers, delivery partners or our internal controls.</p>
+    <p>We reserve the right to refuse or cancel an order where we reasonably believe that the purchaser or recipient does not meet applicable legal requirements.</p>
+  </div></details>
 
-        <ul>
-<li>
-              Information you provide to us: These types of personal information may include:
+  <details class="policy-section"><summary>3. Accounts and authentication</summary><div class="policy-content">
+    <p>You are responsible for keeping your account credentials secure and for activity performed through your account. You must provide accurate information and promptly update information that becomes inaccurate.</p>
+    <p>If you use Google Sign-In, authentication is performed through Google. Your use of Google authentication is also subject to Google's applicable terms and policies. We do not receive your Google password.</p>
+  </div></details>
 
-              <ul>
-<ion-item>
-                  contact details (such as your name, postal addresses, phone numbers and email addresses), demographic information (such as your date of birth, age or age range and gender),</li>
-                <li>
-                    online registration information (such as your password and other authentication information), payment information and personal details where you are making a purchase (such as your credit card details, billing and shipping address, phone number),</li>
-                <li>information provided as part of online questionnaires (such as responses to any customer satisfaction surveys or market research),</li>
-                <li>competition entries/submissions, and</li>
-                <li>in certain cases, your marketing preferences.</li>
-              </ul>
-</ion-item>
+  <details class="policy-section"><summary>4. Products and product information</summary><div class="policy-content">
+    <p>We make reasonable efforts to keep product names, descriptions, images, prices and availability accurate. Product images may be illustrative and packaging or presentation may change.</p>
+    <p>Availability is not guaranteed until an order has been accepted and confirmed. We may correct obvious pricing, description or availability errors and may cancel an affected order, subject to applicable law.</p>
+  </div></details>
 
-          <li>
-              Information we automatically collect/generate or obtain from third parties: These types of personal information may relate to your device (such as your PC, tablet or other mobile device), your use of our websites and apps (as well as certain third-party websites with whom we have partnered), and/or your personal preferences, interests, or geographic location. Examples of these types of information include:
+  <details class="policy-section"><summary>5. Orders and acceptance</summary><div class="policy-content">
+    <p>Submitting an order is a request to purchase the selected products. An order may be subject to stock availability, payment authorization, delivery availability, age requirements and other applicable checks.</p>
+    <p>We may contact you to clarify an order or delivery detail. If we cannot fulfil an order, we will communicate the cancellation and, where payment has already been collected, arrange the applicable refund.</p>
+  </div></details>
 
-              <ul>
-<ion-item>
-                  name and age (or predicted age range),</li>
-                <li>information about your device, operating system, browser and IP address, unique identifiers associated with your device,</li>
-                <li>details of web pages that you have visited,</li>
-                <li>which products you have looked at online (including information about products you have searched for or viewed, purchased or added to an online shopping basket),</li>
-                <li>how long you spend on certain areas of a website or app together with the date and time of your visit/usage, personal information contained within user-generated content (such as blogs and social media postings), social media user name or ID, and</li>
-                <li>social media profile photo and other social media profile information (such as number of followers).</li>
-              </ul>
-</ion-item>
+  <details class="policy-section"><summary>6. Prices, taxes and payment</summary><div class="policy-content">
+    <p>Prices displayed on the website are the prices applicable to the products at the time shown, subject to errors and applicable taxes or charges disclosed at checkout.</p>
+    <p>Payment may be processed through supported payment providers. We may receive payment status, transaction references and related reconciliation information. Payment credentials may be handled directly by the payment provider.</p>
+  </div></details>
 
-        </ul>
-</div>
-</details>
-    <details class="policy-section">
-  <summary>How/when do we collect personal information?</summary>
-  <div class="policy-content">
-        <ul>
-<li>
-              Information you provide to us: There are various situations in which you may directly provide personal information to us. These include when you:
+  <details class="policy-section"><summary>7. Delivery</summary><div class="policy-content">
+    <p>Delivery availability, fees and estimated delivery times may depend on the destination, product availability, order size, payment status and delivery conditions.</p>
+    <p>The customer is responsible for providing an accurate delivery address and being available to receive an age-restricted delivery where applicable. A delivery may be refused where legal age or other required verification cannot be completed.</p>
+  </div></details>
 
-              <ul>
-<ion-item>
-                  enter a competition or take advantage of a promotion,</li>
-                <li>fill in an online questionnaire (such as a customer satisfaction survey), provide credit card details (such as when purchasing products from us), contact us with an enquiry or ask us to provide you with information, register on a website or app or leave any reviews or comments,</li>
-                <li>attend any of our promotional events, forward an item to a friend,</li>
-                <li>inform us of your marketing preferences, and/or</li>
-                <li>communicate with us via social media websites, third party apps or similar technologies.</li>
-              </ul>
-We will indicate where any personal information we have requested is mandatory or optional. We will also explain the consequences should you decide not to provide information which we have indicated is mandatory. In some circumstances this may mean we are unable to provide you with a certain service or product.
-            </ion-item>
-          <li>
-              Information we automatically collect/generate: When you browse or use our websites or apps (as well as certain third- party websites with whom we have partnered) we (and our partners) use cookies and similar technologies to collect information automatically from one or more of your devices associated with you (see below for more details regarding the use of cookies and similar technologies).
+  <details class="policy-section"><summary>8. Acceptable use</summary><div class="policy-content">
+    <p>You must not use the website to commit unlawful activity, interfere with the service, attempt unauthorized access, distribute malicious code, abuse promotions, impersonate another person, or provide fraudulent information.</p>
+  </div></details>
 
-              We also use certain automated techniques and technologies to infer or generate additional information about you, for example by analysing or predicting certain personal aspects such as your personal preferences or interests.
+  <details class="policy-section"><summary>9. Intellectual property</summary><div class="policy-content">
+    <p>Unless otherwise stated, website content, branding, text, graphics, layouts, logos and software are owned by or licensed to Dalali Winehouse Ltd. You may use the website for personal or legitimate business purchasing purposes, but you may not reproduce or commercially exploit our protected content without permission.</p>
+  </div></details>
 
-              In addition, we receive IP addresses from all users because this information is automatically reported by your browser each time you view a web page. For most users accessing the internet, the IP address will be different every time you log on. IP addresses are generally recorded in files called “log files”.
-            </li>
-          <li>
-              information we obtain from third parties: In addition to the information we collect as described above, we may also partner with and use the services of various third parties to collect personal data about you from other sources, We will only obtain such information where we have your consent and/or another legal ground to do so. This information may include:
+  <details class="policy-section"><summary>10. Third-party services</summary><div class="policy-content">
+    <p>The website may rely on third-party services for authentication, payments, hosting, analytics, maps, communications or delivery. Those services may have their own terms and privacy policies. Our use of Google Sign-In is described in our Privacy Policy.</p>
+  </div></details>
 
-              <ul>
-<ion-item>
-                  Data from other organisations who have obtained your permission to share information about you with us;
-                  </li>
-                <li>
-                    Data we receive when someone refers you for our products and services (please see below for more);
-                  </li>
-                <li>
-                    Data we may require from other organisations to fulfil our legal obligations; and/or
-                  </li>
-                <li>
-                    Where your information is publicly available.
+  <details class="policy-section"><summary>11. Service availability</summary><div class="policy-content">
+    <p>We aim to keep the website available and accurate, but we do not guarantee uninterrupted or error-free operation. We may temporarily suspend parts of the service for maintenance, security, upgrades or circumstances outside our reasonable control.</p>
+  </div></details>
 
-                    Here are a few places third party data may come from:
+  <details class="policy-section"><summary>12. Liability and applicable law</summary><div class="policy-content">
+    <p>Nothing in these Terms excludes or limits any liability or consumer right that cannot lawfully be excluded or limited. Subject to applicable law, Dalali is not responsible for losses caused by circumstances outside our reasonable control or by inaccurate information supplied by a customer.</p>
+    <p>These Terms are intended to be interpreted consistently with applicable laws of Kenya and any mandatory consumer-protection rights that apply to your transaction.</p>
+  </div></details>
 
-                    Public information sources, such as the Electoral Roll; Third-party social media platforms; Other third-party websites that we have partnered with.
-                  </li>
-              </ul>
-</ion-item>
-        </ul>
-</div>
-</details>
-    <details class="policy-section">
-  <summary>Purposes for which your personal information is used</summary>
-  <div class="policy-content">
-        The different purposes for which we use your personal information are set out below:
-        <ul>
-<li>
-              Marketing Communications: We may use your personal information to communicate with you through channels such as email, SMS and post about our products and services, and those of our subsidiaries, affiliates, and parent companies, and any of their related businesses. This may also include using your date of birth to send you special offers around your birthday. You have the right to opt out at any time from receipt of further marketing communications as described in “Your Rights” section.
-            </li>
-          <li>
+  <details class="policy-section"><summary>13. Changes to these Terms</summary><div class="policy-content">
+    <p>We may update these Terms when our services, business processes or legal requirements change. The latest version will be published on this page with its effective date.</p>
+  </div></details>
 
-              Marketing analysis: We may use your personal information for marketing analysis, for example, to assess trends amongst our consumers and what people are saying about our products, to evaluate the impact and effectiveness of our marketing campaigns and promotions, and to analyse the number and types of visitors to our websites and/or users of our apps
+  <details class="policy-section"><summary>14. Contact</summary><div class="policy-content">
+    <p>For questions about these Terms, contact <a href="mailto:customercare@dalaliwinehouse.com">customercare@dalaliwinehouse.com</a> or <a href="tel:+254728583967">+254 728 583 967</a>.</p>
+  </div></details>
 
-              (including the locations from which such visitors/users access our websites and apps). We often aggregate personal information for these purposes so that it no longer identifies any particular individual.
-
-            </li>
-          <li>
-              Online interest-based advertising: We use techniques such as “online behavioural advertising” and “programmatic advertising” which involve the use of personal information, which includes the information we automatically collect/generate as referred to above (such as information about your online activity and/or personal preferences), as well as other information you provide to us (such as your contact details) and information regarding your online purchase (and the sharing of it with our service providers) to display the most appropriate and relevant advertising to you either on our websites, apps or third-party websites (including social media platforms).
-
-              Similarly, we may also use such personal information (and share it with our service providers as described below) in order to determine if you are a member of a particular social media platform so that
-
-              <ul>
-<ion-item>
-                  we can display our advertising to you on that service or
-                  </li>
-                <li>
-                    we can identify consumers who share similar interests and characteristics with you for the purposes of making our advertising more relevant to consumers – examples of this are Facebook’s “Custom Audiences” and “Lookalike Audiences” products which we may use in certain countries subject to local law.
-                  </li>
-              </ul>
-In relation to these products, we act as joint controller of your data.
-
-              See the section on Cookies below for more details about online interest-based advertising. You have the right to opt-out at any time from the use of your personal information for online interest-based advertising.
-            </ion-item>
-          <li>
-              Online ad verification: We use personal information to monitor our digital advertising to ensure that it does not appear on unsuitable websites or near inappropriate content, and also to ensure that our advertising is visible and seen by real people online (as opposed to ‘bots’ or similar fraudulent techniques)
-            </li>
-          <li>
-              Forward to a friend: When you provide us with information regarding another individual, such as when you request that we send someone information from one of our websites, we will send that individual only the information you specifically requested that we send. We will not send them additional communications based on your providing us with their information. You must confirm that your friend is of Legal Purchase Age in the jurisdiction where they are located in order for us to transmit the requested information and that they are happy to receive any such communications.
-            </li>
-          <li>
-              Authentication and access control: We may use your personal information to authenticate your access to our websites or apps and to determine which content to provide you and/or whether you should be granted access to certain content (for example checking your age or location to ensure you are of Legal Purchase Age in the jurisdiction where you are located). We may also use your personal information to verify your identity when responding to any requests to exercise your rights under applicable law.
-            </li>
-          <li>
-              Comply with legal obligations and protect against legal claims or liability: We may use your personal information to comply with our legal obligations protect us against legal claims, or to detect, protect, or defend us and/or other third parties against error, negligence, breach of contract, theft, fraud, or other illegal or harmful activity, to comply with our audit and security requirements, or to audit compliance with our corporate policies, procedures, legal, or contractual obligations.
-            </li>
-          <li>
-              Customer service: We will use your personal information to provide specific services that you request from us, as well as to provide additional services that may be of interest. We will also use your personal information to process any orders you submit, to contact you in relation to any enquiries, orders or matters relating to your account and to maintain your accounts and manage transactions such as credit card payments for any products that you order from us or our agents, or for the fulfilment of such transactions (e.g. delivery) or to answer any questions you may have. We may also use your personal information to notify you about changes to our services, our terms and conditions or this Privacy and Cookie Notice.
-            </li>
-          <li>
-              Corporate transactions: We may use your personal information in the event of a sale, merger, consolidation, change in control, transfer of substantial assets, financing, reorganization, or liquidation whereby we transfer, sell, or assign to a third-party information concerning your relationship with us.
-            </li>
-          <li>
-              Technical maintenance: We use personal information for system administration purposes and to diagnose service or technology problems reported by our users or engineers, these types of problem may be associated with the IP addresses controlled by a specific web company or ISP.
-            </li>
-        </ul>
-</div>
-</details>
-    <details class="policy-section">
-  <summary>Legal basis for the processing of personal information</summary>
-  <div class="policy-content">
-        We will only process your personal information where we have a legal basis to do so. The legal basis will depend on the purposes for which we have collected and use your personal information. In almost every case the legal basis will be one of the following:
-        <ul>
-<li>
-              Consent: For example, where you have provided your consent to receive certain marketing from us. You can withdraw your consent at any time, including by clicking on the “unsubscribe” link at the bottom of any marketing email we send you.
-            </li>
-          <li>
-              Our legitimate business interests: Where it is necessary for us to understand our customers, promote our services and operate effectively as a multinational beverages company, provided in each case that this is done in a legitimate way which does not unduly affect your privacy and other rights. For example we will rely on this legal basis when we conduct certain market analysis to understand our consumers in sufficient detail so we can create new products and improve the profile of our brands.
-            </li>
-          <li>
-              Performance of a contract with you: This would also apply where we need to take steps prior to entering into a contract with you. For example, where you have purchased a product from us and we need to use your contact details and payment information in order to process your order and send the product to you.
-            </li>
-          <li>
-              Compliance with law: Where we are subject to a legal obligation and need to use your personal information in order to comply with that obligation
-            </li>
-        </ul>
-</div>
-</details>
-    <details class="policy-section">
-  <summary>Disclosure of your personal information</summary>
-  <div class="policy-content">
-        We value your personal information and only share it in certain circumstances. For example:
-
-        third parties where you have provided your consent or where permitted by applicable law. For example we will obtain your permission before we allow a third party that is not an affiliate to send you any marketing and promotional information relating to that third party’s products or services;
-
-        our service providers and subcontractors, including our affiliates, and/or third party websites (such as social media platforms or search engines) retained to perform functions on our behalf, or to provide services to us (such as warehousing and delivery) marketing and advertising (including by delivering online interest-based advertising on third party websites and social media platforms where you have consented to the use of advertising cookies set by Diageo or our partners); credit card and data processing; age verification; monitoring our digital advertisements to ensure that they do not appear on unsuitable websites or near inappropriate content and also to ensure that our advertising is visible and seen by real people online (as opposed to ‘bots’ or similar fraudulent techniques); software development; website hosting and management; information technology and office services; legal, accounting, audit and other professional service providers; and other services related to our business), provided such service providers and subcontractors have entered into written agreements with us and do not collect, use, or disclose the personal information for any purpose other than to perform such functions on our behalf, to provide services to us, or as otherwise required or permitted by law; to credit reference agencies who assist us with identity verification and credit reference checks, as described above
-
-        <ul>
-<li>
-              third parties who, in our reasonable judgment, are providing or seeking the information as your authorised or appointed legal agent;
-            </li>
-          <li>
-              a person or entity, including our affiliates, in the event of a sale, merger, consolidation, change in control, transfer of substantial assets, financing, reorganisation, or liquidation whereby we transfer, sell, or assign to such third-party information concerning your relationship with us, including without limitation, personal information that you provide and other information concerning your relationship with us; and
-            </li>
-          <li>
-              law enforcement, governmental or regulatory agencies, or other third parties globally in order to comply with applicable law, or where we believe such action is necessary in order to comply with applicable law, or to detect, protect, or defend us and/or other third parties against error, negligence, breach of contract, theft, fraud, or other illegal or harmful activity, to comply with our audit and security requirements, or to audit compliance with our corporate policies, procedures, legal, or contractual obligations.
-            </li>
-        </ul>
-</div>
-</details>
-    <details class="policy-section">
-  <summary>International data transfers</summary>
-  <div class="policy-content">
-        Please note that your personal information may be transferred to, and stored at, a destination outside the country in which you reside, including countries, which have less strict, or no data protection laws, when compared to those in your country.
-
-        Whenever we transfer your information as described in the paragraph above, we will take steps which are reasonably necessary to ensure that adequate safeguards are in place to protect your personal information and to make sure it is treated securely. In these cases, we rely on approved data transfer mechanisms (for example, the EU “Standard Contractual Clauses”) to ensure your information is subject to adequate safeguards in the recipient country.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>Public areas of our websites and apps</summary>
-  <div class="policy-content">
-        Information that you post on or through the public areas of our websites and apps (e.g., chat rooms, bulletin boards, discussion groups), or on social media platforms generally is accessible to, and may be collected and used by, others, and may result in unsolicited messages or other contact from others. You should not provide personal information about yourself in public (or interactive) areas of our websites, apps or social media pages.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>Information security</summary>
-  <div class="policy-content">
-        We take information security seriously and take precautions to keep your personal information secure. We have put in place appropriate physical, technical, and organisational measures to safeguard the information we collect. However, we have no control over the privacy of any communication while it is in transit to us. We therefore recommend that you do not include confidential, proprietary, or sensitive information in any such communications.
-
-        Unfortunately, no data transmission over the Internet or data storage system can be guaranteed to be 100% secure. If you have reason to believe that your interaction with us is no longer secure (for example, if you feel that the security of any account you might have with us has been compromised), please immediately notify us of the problem by contacting us at the contact details below.
-
-        In the unlikely event that we believe that the security of your personal information in our possession or control may have been compromised, we may seek to notify you of that development. If such a notification is appropriate, we will endeavour to do so as promptly as possible under the circumstances, and, to the extent we have your email address, we may notify you by email.
-
-        You are reminded that, in accordance with the Conditions of Use for this website and/or app, you are responsible for maintaining the strict confidentiality of your account password, and you are responsible for any activity under your account and password. It is your sole responsibility to control the dissemination and use of your password, access to and use of your account, and to notify us when you wish to cancel your account. We will not be responsible or liable for any loss or damage arising from your failure to comply with this obligation.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>How long will we retain your personal information for?</summary>
-  <div class="policy-content">
-        We will retain your personal information for the period necessary to fulfil the purposes outlined in this Privacy and Cookie Notice unless a longer retention period is required or permitted by law. After this period, it will be deleted or in some cases anonymised.
-
-        For example, where you have made a purchase with us, we will keep a record of your purchase for the period necessary for invoicing, tax and warranty purposes. We may also keep a record of correspondence with you (for example if you have made a complaint) for as long as is appropriate to protect us in the event of a legal claim.
-
-        Where we have collected the personal information based on your consent and we have no other lawful basis to continue with that processing, if you subsequently withdraw your consent then we will delete your personal information. However, please note that where you unsubscribe from our marketing communications, we will keep a record of your contact details to ensure we do not send you further marketing communications in future.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>Cookies and similar technologies</summary>
-  <div class="policy-content">
-        Like many other websites and apps, we use cookies, scripts, pixel tags, etags, web beacons and similar technologies (collectively referred to as “cookies”) to help us gather and store information about visitors to our websites and apps and certain third-party websites with whom we have partnered.
-
-        This section explains what cookies are and gives details of the specific cookies we use on our website. It also sets out why we use these cookies and provides information on the cookie choices that you and all our website visitors have.
-
-        We use a range of cookies on our website, including strictly necessary cookies, performance / analytics cookies, functional cookies and advertising cookies (see more details under ‘What do we use our cookies for?’ below). The cookies may be set by us or by a third party, including advertising cookies, which are used by our advertising partners to show online adverts based on your activity. When you first visit our website, you will be asked via our Cookie Preference Centre (the ‘CPC’) if you agree to non-essential cookies – and we will not use these cookies unless and until you provide your consent. You can also change your mind at any time using the CPC or the settings on your internet browser or device (see more details under ‘How to manage cookies’ below).
-
-        If you have any questions about our use of cookies, please get in touch with us.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>What is a cookie?</summary>
-  <div class="policy-content">
-        A cookie is a text-only string of information that a website transfers to the cookie file of the browser on your device’s hard disk. A cookie will typically contain the name of the domain from which the cookie has come, the "lifetime" of the cookie, and a value, usually a randomly generated unique number. The other technologies we use serve a very similarly function but work slightly differently.
-
-        We use two broad types of cookies:
-        <ul>
-<li>
-              First party cookies, served directly by us to your device when you visit our website; and
-            </li>
-          <li>
-              Third party cookies, served by a third party on our behalf when you visit our website and certain third-party websites with whom we have partnered.
-
-            </li>
-        </ul>
-These cookies can be divided into session cookies and persistent cookies. Session cookies are temporary cookies that remember your user choices and preferences and are then deleted as soon as you leave the site. Persistent cookies stay in one of your browser’s subfolders until you delete them manually or until they expire.
-
-        Cookies are useful because they allow a website to recognise a user’s device. You can find more information about cookies at: www.allaboutcookies.org.
-        </div>
-</details>
-    <details class="policy-section">
-  <summary>How does this website use cookies?</summary>
-  <div class="policy-content">
-        This website uses the following cookies for the following purposes:
-        <ul>
-<li>
-              Strictly Necessary cookies: These cookies are essential to enable you to move around the website and use its features, such as accessing secure areas of the website. Without these cookies, our website cannot function properly and services you have asked for, like shopping baskets or e-billing, cannot be provided.
-            </li>
-          <li>
-              Examples of Strictly Necessary Cookies we may use on this website include Content Management Cookies which are required by the site for the content management system to work and Template Preference Cookies which are necessary for mobile sites and enable the site to look and feel the way it is intended to.
-            </li>
-          <li>
-              Performance and Analytics cookies: These cookies collect information about how visitors use a website, for instance which pages visitors go to most often, and any error messages visitors receive from web pages. These cookies don’t collect information that directly identifies a visitor. Information collected by these cookies is often aggregated and therefore becomes anonymous. It is only used to improve how a website works and understand how most people use our website. One example of this is Google Analytics, which we use to help analyse use of the site. This analytical tool uses cookies to collect standard internet log information and visitor behaviour information which is then aggregated so that it does not identify any individuals. The information about your use of the website and your IP address is transmitted to Google and is used by us to evaluate visitors' use of the website, compile statistical reports on website activity and create a profile of aggregated visitors based on demographics and interests. We also use a tool called Google Display Network Impression Reporting to help us understand which adverts we place on other websites in the Google Display Network are better at attracting visitors to our website. View an overview of Google Analytics’ privacy commitments here.
-            </li>
-        </ul>
-</div>
-</details>
-
-    <details class="policy-section">
-  <summary>Return & Refund Policy</summary>
-  <div class="policy-content">
-        <p>
-          Thanks for shopping at 
-          <a href="http://dalaliwinehouse.com">
-            dalaliwinehouse.com.
-          </a>
-          If you are not entirely satisfied with your purchase, we're here to help.
-        </p>
-        <h4>
-          Returns
-        </h4>
-        <p>
-          You have 15days to return an item from the date you received it.
-          To be eligible for a return, your item must be unused and in the same condition that you received it.
-          Your item must be in the original packaging.
-          Your item needs to have the receipt or proof of purchase.
-        </p>
-
-        <h4>
-          Refunds
-        </h4>
-
-        <p>
-
-          Once we receive your item, we will inspect it and notify you that we have received your returned item. We will immediately notify you on the status of your refund after inspecting the item.
-          If your return is approved, we will initiate a refund to your credit card (or mpesa account).
-          You will receive the credit within a certain amount of days, depending on your card issuer's policies.
-
-        </p>
-
-        <h4>
-          Shipping
-        </h4>
-        <p>
-          You will be responsible for paying for your own shipping costs for returning your item. Shipping
-          costs are nonrefundable. If you receive a refund, the cost of return shipping will be deducted from your refund.
-        </p>
-
-        <h4>
-          Contact Us
-        </h4>
-        <p>
-          If you have any questions on how to return your item to us, contact us
-          at <a href="mailto:customercare@dalaliwinehouse.com">customercare&#64;dalaliwinehouse.com</a>  or whatsapp or call <a href="tel:+254728583967">+254728583967</a>.
-        </p>
-        </div>
-</details>
 </div>
 {% endblock %}

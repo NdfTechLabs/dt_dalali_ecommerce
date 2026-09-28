@@ -1,0 +1,96 @@
+{% extends "templates/web.html" %}
+{% block title %}{{ _('Refund & Returns Policy') }}{% endblock %}
+{% block head_include %}
+
+<style>
+  .dalali-policy{max-width:1000px;margin:0 auto;padding:24px 16px 56px;color:#333;line-height:1.7;font-size:15px}
+  .dalali-policy .policy-header{margin-bottom:28px}
+  .dalali-policy h1{font-size:32px;line-height:1.2;margin:0 0 10px;color:#212529}
+  .dalali-policy h2{font-size:22px;margin:30px 0 12px;color:#212529}
+  .dalali-policy h3{font-size:18px;margin:24px 0 10px;color:#212529}
+  .dalali-policy p{margin:0 0 16px}
+  .dalali-policy ul,.dalali-policy ol{margin:0 0 18px;padding-left:25px}
+  .dalali-policy li{margin-bottom:8px}
+  .dalali-policy .notice{padding:16px 18px;border:1px solid #e5e7eb;border-radius:8px;background:#f8f9fa;margin:18px 0}
+  .dalali-policy .policy-section{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px;background:#fff;overflow:hidden}
+  .dalali-policy .policy-section>summary{cursor:pointer;list-style:none;padding:16px 48px 16px 18px;background:#f8f9fa;font-weight:600;color:#212529;position:relative;user-select:none}
+  .dalali-policy .policy-section>summary::-webkit-details-marker{display:none}
+  .dalali-policy .policy-section>summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;color:#6c757d}
+  .dalali-policy .policy-section[open]>summary::after{content:"−"}
+  .dalali-policy .policy-section[open]>summary{border-bottom:1px solid #e5e7eb}
+  .dalali-policy .policy-content{padding:20px 18px}
+  .dalali-policy a{color:inherit;text-decoration:underline}
+  .dalali-policy table{width:100%;border-collapse:collapse;margin:16px 0}
+  .dalali-policy th,.dalali-policy td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+  .dalali-policy th{background:#f8f9fa}
+  .dalali-policy .muted{color:#666;font-size:14px}
+  @media(max-width:576px){.dalali-policy{padding:16px 10px 40px;font-size:14px}.dalali-policy h1{font-size:27px}.dalali-policy .policy-content{padding:16px 14px}.dalali-policy .policy-section>summary{padding:14px 42px 14px 14px}}
+</style>
+
+{% endblock %}
+{% block page_content %}
+<div class="dalali-policy">
+  <div class="policy-header">
+    <h1>Refund & Returns Policy</h1>
+    <p class="muted">Dalali Winehouse Ltd · Effective date: 28 September 2026 · Last updated: 28 September 2026</p>
+  </div>
+
+  <div class="notice"><strong>Return and Refund Policy.</strong> This policy describes Dalali Winehouse's standard return and refund process. It does not remove or limit any mandatory consumer rights or remedies that apply under applicable law.</div>
+
+  <details class="policy-section" open><summary>1. Return window</summary><div class="policy-content">
+    <p>Our standard return window is <strong>15 days from the date you receive the item</strong>, subject to the conditions below and any mandatory rights provided by applicable law.</p>
+    <p>Because alcoholic beverages and other products may be subject to safety, quality and regulatory requirements, certain products or circumstances may have special return restrictions. We will explain any applicable restriction when you contact us.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>2. Eligibility for a standard return</summary><div class="policy-content">
+    <p>For a standard change-of-mind return, the item should generally be:</p>
+    <ul>
+      <li>unused and in the condition in which it was received;</li>
+      <li>in its original packaging where reasonably applicable; and</li>
+      <li>accompanied by an order number, receipt or other proof of purchase.</li>
+    </ul>
+    <p>We may decline a standard return where the item has been opened, consumed, damaged through customer misuse, or cannot reasonably be resold, subject always to any mandatory legal rights that apply to defective or incorrectly supplied goods.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>3. Damaged, incorrect or defective items</summary><div class="policy-content">
+    <p>If an item arrives damaged, incorrect, defective or materially different from what you ordered, contact us promptly. Provide your order number and photographs or other evidence where possible.</p>
+    <p>After assessment, we may offer an appropriate remedy such as replacement, correction, repair where applicable, or refund, subject to the circumstances and applicable law.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>4. How to request a return</summary><div class="policy-content">
+    <ol>
+      <li>Contact customer service at <a href="mailto:customercare@dalaliwinehouse.com">customercare@dalaliwinehouse.com</a> or <a href="tel:+254728583967">+254 728 583 967</a>.</li>
+      <li>Provide your order number, the product concerned and the reason for the return.</li>
+      <li>Where requested, provide photographs or other information needed to assess the item.</li>
+      <li>Wait for return instructions before sending the item back.</li>
+    </ol>
+  </div></details>
+
+  <details class="policy-section"><summary>5. Return shipping</summary><div class="policy-content">
+    <p>For a standard change-of-mind return, the customer is responsible for reasonable return shipping costs unless we agree otherwise.</p>
+    <p>Where the return is because we supplied an incorrect item or the item arrived damaged or defective, we will assess the appropriate shipping arrangement and remedy based on the circumstances and applicable law.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>6. Refunds</summary><div class="policy-content">
+    <p>Once a returned item has been received and assessed, we will communicate the outcome of the refund request. Where a refund is approved, it will normally be made to the original payment method where practicable, or by another appropriate method agreed with the customer.</p>
+    <p>For card or mobile-money payments, the time for funds to appear may depend on the payment provider or financial institution.</p>
+    <p>Where a refund is required because an order was cancelled before fulfilment or could not be supplied, we will arrange the applicable refund in accordance with the circumstances and applicable law.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>7. Exceptions and legal rights</summary><div class="policy-content">
+    <p>Nothing in this policy is intended to exclude, restrict or waive a consumer right or remedy that cannot lawfully be excluded. Where applicable law provides a mandatory remedy for defective, unsafe, misrepresented or incorrectly supplied goods, that remedy will apply.</p>
+    <p>We may refuse returns that are fraudulent or that do not meet the conditions of the applicable return route, but we will not use this policy to remove mandatory statutory rights.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>8. Product recalls and safety</summary><div class="policy-content">
+    <p>If a product is subject to a safety notice or recall, we may contact affected customers and provide instructions for return, replacement or refund as appropriate. Customers should follow any safety instructions provided with or about a recalled product.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>9. Contact us</summary><div class="policy-content">
+    <p>Email: <a href="mailto:customercare@dalaliwinehouse.com">customercare@dalaliwinehouse.com</a><br>
+    Phone / WhatsApp: <a href="tel:+254728583967">+254 728 583 967</a></p>
+    <p class="muted">Before publication, confirm the return window, contact details and operational refund process match Dalali Winehouse's actual business procedures.</p>
+  </div></details>
+
+</div>
+{% endblock %}

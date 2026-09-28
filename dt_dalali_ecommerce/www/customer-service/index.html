@@ -1,0 +1,83 @@
+{% extends "templates/web.html" %}
+{% block title %}{{ _('Customer Service') }}{% endblock %}
+{% block head_include %}
+
+<style>
+  .dalali-policy{max-width:1000px;margin:0 auto;padding:24px 16px 56px;color:#333;line-height:1.7;font-size:15px}
+  .dalali-policy .policy-header{margin-bottom:28px}
+  .dalali-policy h1{font-size:32px;line-height:1.2;margin:0 0 10px;color:#212529}
+  .dalali-policy h2{font-size:22px;margin:30px 0 12px;color:#212529}
+  .dalali-policy h3{font-size:18px;margin:24px 0 10px;color:#212529}
+  .dalali-policy p{margin:0 0 16px}
+  .dalali-policy ul,.dalali-policy ol{margin:0 0 18px;padding-left:25px}
+  .dalali-policy li{margin-bottom:8px}
+  .dalali-policy .notice{padding:16px 18px;border:1px solid #e5e7eb;border-radius:8px;background:#f8f9fa;margin:18px 0}
+  .dalali-policy .policy-section{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px;background:#fff;overflow:hidden}
+  .dalali-policy .policy-section>summary{cursor:pointer;list-style:none;padding:16px 48px 16px 18px;background:#f8f9fa;font-weight:600;color:#212529;position:relative;user-select:none}
+  .dalali-policy .policy-section>summary::-webkit-details-marker{display:none}
+  .dalali-policy .policy-section>summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;color:#6c757d}
+  .dalali-policy .policy-section[open]>summary::after{content:"−"}
+  .dalali-policy .policy-section[open]>summary{border-bottom:1px solid #e5e7eb}
+  .dalali-policy .policy-content{padding:20px 18px}
+  .dalali-policy a{color:inherit;text-decoration:underline}
+  .dalali-policy table{width:100%;border-collapse:collapse;margin:16px 0}
+  .dalali-policy th,.dalali-policy td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+  .dalali-policy th{background:#f8f9fa}
+  .dalali-policy .muted{color:#666;font-size:14px}
+  @media(max-width:576px){.dalali-policy{padding:16px 10px 40px;font-size:14px}.dalali-policy h1{font-size:27px}.dalali-policy .policy-content{padding:16px 14px}.dalali-policy .policy-section>summary{padding:14px 42px 14px 14px}}
+</style>
+
+{% endblock %}
+{% block page_content %}
+<div class="dalali-policy">
+  <div class="policy-header">
+    <h1>Customer Service</h1>
+    <p class="muted">Dalali Winehouse Ltd · Effective date: 28 September 2026 · Last updated: 28 September 2026</p>
+  </div>
+
+  <div class="notice"><strong>We are here to help.</strong> This page explains how to contact Dalali Winehouse for order assistance, account support, delivery questions, complaints and other customer-service matters.</div>
+
+  <details class="policy-section" open><summary>1. Contact channels</summary><div class="policy-content">
+    <ul>
+      <li>Email: <a href="mailto:customercare@dalaliwinehouse.com">customercare@dalaliwinehouse.com</a></li>
+      <li>Phone / WhatsApp: <a href="tel:+254728583967">+254 728 583 967</a></li>
+      <li>Website: <a href="https://dalaliwinehouseltd.com">dalaliwinehouseltd.com</a></li>
+    </ul>
+    <p>When contacting us about an order, include your order number and the name or contact details used for the order where possible. Do not send passwords, full card numbers or other unnecessary sensitive information by email or WhatsApp.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>2. Order assistance</summary><div class="policy-content">
+    <p>Our customer-service team can assist with order status, product availability, delivery details, payment confirmation, account access and other questions relating to your purchase.</p>
+    <p>We may need to verify certain account or order details before discussing information about an order.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>3. Google Sign-In and account support</summary><div class="policy-content">
+    <p>If you created or accessed your account using Google Sign-In and are unable to sign in, contact customer service using the details above. We may ask for information needed to identify your Dalali account, but we will never ask for your Google password.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>4. Delivery support</summary><div class="policy-content">
+    <p>If a delivery is delayed, incomplete, damaged or cannot be completed, contact us as soon as reasonably possible with your order number and relevant details.</p>
+    <p>For age-restricted deliveries, the recipient may be required to satisfy applicable age or identity checks before the order can be handed over.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>5. Complaints and service issues</summary><div class="policy-content">
+    <p>We encourage customers to contact us first so that we can investigate and resolve service issues. Please provide a clear description of the problem, order number, relevant dates and supporting photographs where appropriate.</p>
+    <p>Complaints involving damaged, incorrect or defective products should be reported promptly and may be handled under our Refund & Returns Policy and any mandatory rights available under applicable law.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>6. Privacy and data requests</summary><div class="policy-content">
+    <p>Privacy, access, correction, objection and deletion requests are handled under our Privacy Policy. We may verify your identity before responding to a request concerning personal information.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>7. Response times</summary><div class="policy-content">
+    <p>We aim to respond to customer enquiries as soon as reasonably practicable. Response times may vary depending on the nature and complexity of the request, delivery location, payment provider or other third-party dependency.</p>
+  </div></details>
+
+  <details class="policy-section"><summary>8. Contact details</summary><div class="policy-content">
+    <p>Email: <a href="mailto:customercare@dalaliwinehouse.com">customercare@dalaliwinehouse.com</a><br>
+    Phone / WhatsApp: <a href="tel:+254728583967">+254 728 583 967</a></p>
+    <p class="muted">Before publication, confirm that these contact details are current.</p>
+  </div></details>
+
+</div>
+{% endblock %}
