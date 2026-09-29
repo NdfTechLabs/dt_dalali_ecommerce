@@ -2,6 +2,49 @@
 
 {% block page_content %}
 
+<!-- ============================================================
+     AGE VERIFICATION
+============================================================ -->
+<div id="age-verification" class="age-verification-overlay">
+    <div class="age-verification-modal">
+
+        <div class="age-verification-icon">
+            🍷
+        </div>
+
+        <h2>Are you 18 or older?</h2>
+
+        <p>
+            You must be at least 18 years old to enter this website.
+            By entering, you confirm that you meet the legal drinking
+            age requirement in your jurisdiction.
+        </p>
+
+        <div class="age-verification-actions">
+            <button
+                type="button"
+                id="age-confirm"
+                class="btn btn-primary age-btn"
+            >
+                Yes, I am 18+
+            </button>
+
+            <button
+                type="button"
+                id="age-deny"
+                class="btn btn-secondary age-btn"
+            >
+                No, I am under 18
+            </button>
+        </div>
+
+        <small class="age-verification-note">
+            Please drink responsibly.
+        </small>
+
+    </div>
+</div>
+
 
     <!-- ═══════════════════════════════════════════════════════════
         HERO + FILTER FORM WRAPPER
@@ -108,4 +151,54 @@
      window.HOMEPAGE_SECTIONS = {{ homepage_sections_json }};
     </script>
 
+<script>
+    (function () {
+        const STORAGE_KEY = "dalali_age_verified";
+
+        const overlay = document.getElementById("age-verification");
+        const confirmButton = document.getElementById("age-confirm");
+        const denyButton = document.getElementById("age-deny");
+
+        if (!overlay) {
+            return;
+        }
+
+        /*
+         * Check whether the visitor has already confirmed
+         * that they are 18 or older.
+         */
+        if (localStorage.getItem(STORAGE_KEY) === "true") {
+            overlay.remove();
+            document.body.style.overflow = "";
+            return;
+        }
+
+        /*
+         * Lock the page while the age gate is displayed.
+         */
+        document.body.style.overflow = "hidden";
+
+        /*
+         * Visitor confirms they are 18+
+         */
+        confirmButton.addEventListener("click", function () {
+            localStorage.setItem(STORAGE_KEY, "true");
+
+            overlay.remove();
+
+            document.body.style.overflow = "";
+        });
+
+        /*
+         * Visitor is under 18.
+         *
+         * Replace this URL with wherever you want
+         * under-age visitors to be redirected.
+         */
+        denyButton.addEventListener("click", function () {
+            window.location.href = "https://www.google.com/";
+        });
+
+    })();
+</script>
 {% endblock %}

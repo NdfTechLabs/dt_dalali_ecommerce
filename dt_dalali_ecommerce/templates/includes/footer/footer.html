@@ -14,6 +14,7 @@
       </p>
     </div>
 
+
     <!-- Dynamic Footer Links -->
     {% if footer_items %}
 
@@ -52,7 +53,40 @@
 
     {% endif %}
 
-    <!-- Contact (dynamic) -->
+
+    <!-- Policies -->
+    <div class="footer-col">
+      <h4 class="dt-group-label">Policies</h4>
+
+      <ul>
+        <li>
+          <a href="/privacy-policy">
+            Privacy Policy
+          </a>
+        </li>
+
+        <li>
+          <a href="/TsandCs">
+            Terms &amp; Conditions
+          </a>
+        </li>
+
+        <li>
+          <a href="/customer-service">
+            Customer Service
+          </a>
+        </li>
+
+        <li>
+          <a href="/refund-and-returns">
+            Refund &amp; Returns
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- Contact -->
     <div class="footer-col">
       <h4 class="dt-group-label">Contact</h4>
 
@@ -61,11 +95,17 @@
       {% endif %}
 
       {% if footer_email %}
-        <p>Email: {{ footer_email }}</p>
+        <p>
+          Email:
+          <a href="mailto:{{ footer_email }}">
+            {{ footer_email }}
+          </a>
+        </p>
       {% endif %}
     </div>
 
   </div>
+
 
   <!-- Bottom bar -->
   <div class="dt-footer-bottom">
