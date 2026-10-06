@@ -1933,27 +1933,64 @@ body {
    LEFT SIDEBAR
 ══════════════════════════════════════════════════════════ */
 
-.dalali-catalog-sidebar {
-  background: var(--dalali-surface);
-  border-right: 1px solid var(--dalali-border);
-  min-height: 100%;
-  padding: 0 0 32px;
-  position: sticky;
-  top: 0;
-  max-height: 100vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--dalali-border) transparent;
+.dalali-sidebar-toggle {
+    display: none;
 }
 
-/* Hide sidebar on mobile — toggled by JS */
+.dalali-sidebar-content {
+    display: block;
+}
+
 @media (max-width: 900px) {
-  .dalali-catalog-sidebar {
-    position: static;
-    max-height: none;
-    border-right: none;
-    border-bottom: 1px solid var(--dalali-border);
-  }
+
+    .dalali-catalog-sidebar {
+        position: static;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--dalali-border);
+        padding: 0;
+        display: none;
+    }
+
+    .dalali-sidebar-toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 16px 18px;
+
+        border: 0;
+        background: var(--dalali-surface);
+
+        color: var(--dalali-text);
+        font: inherit;
+        font-weight: 600;
+
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .dalali-sidebar-toggle-icon {
+        transition: transform 0.2s ease;
+    }
+
+    .dalali-sidebar-toggle[aria-expanded="true"]
+    .dalali-sidebar-toggle-icon {
+        transform: rotate(180deg);
+    }
+
+    .dalali-sidebar-content {
+        display: none;
+    }
+
+    .dalali-sidebar-content.is-open {
+        display: block;
+    }
+}
+
+.is-open{
+  display: block;
 }
 
 /* ── Sidebar sections ── */

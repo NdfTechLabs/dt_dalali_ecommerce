@@ -27,6 +27,7 @@ frappe.ready(function () {
 	if (window.location.pathname === "/cart") {
 		initCartErrorFormatter();
 	}
+	attachCatalogSidebarToggle();
 });
 
 /* ─── Page Detection ─────────────────────────────────────── */
@@ -1029,6 +1030,37 @@ function initCartErrorFormatter() {
 			}
 		});
 	};
+}
+
+function attachCatalogSidebarToggle() {
+    const sidebar = document.querySelector("#dalali-sidebar");
+    const toggle = document.querySelector("#dalali-sidebar-toggle");
+
+    if (!sidebar || !toggle) {
+        return;
+    }
+
+    if (sidebar.dataset.toggleAttached === "1") {
+        return;
+    }
+
+    sidebar.dataset.toggleAttached = "1";
+				console.log("attached");
+				
+    toggle.addEventListener("click", () => {
+        const isOpen =
+            toggle.getAttribute("aria-expanded") === "true";
+
+        toggle.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+        );
+
+        sidebar.classList.toggle(
+            "is-open",
+            !isOpen
+        );
+    });
 }
 
 /* ─── Helpers ────────────────────────────────────────────── */
