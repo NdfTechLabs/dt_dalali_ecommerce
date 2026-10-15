@@ -1,0 +1,420 @@
+/*
+ * Dalali Winehouse — About page styles
+ * All selectors are scoped to .dalali-about to avoid changing the Frappe theme.
+ * Uses the generic theme variables supplied by the site.
+ */
+
+.dalali-about {
+  --dalali-about-border: color-mix(in srgb, var(--color-text) 14%, transparent);
+  --dalali-about-soft: var(--surface-subtle, #F6F0EA);
+  --dalali-about-radius: 1.25rem;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: inherit;
+  line-height: 1.65;
+  overflow: hidden;
+}
+
+.dalali-about *,
+.dalali-about *::before,
+.dalali-about *::after {
+  box-sizing: border-box;
+}
+
+.dalali-about h1,
+.dalali-about h2,
+.dalali-about h3,
+.dalali-about p {
+  margin-top: 0;
+}
+
+.dalali-about h1,
+.dalali-about h2,
+.dalali-about h3 {
+  color: var(--color-text);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.dalali-about h1 {
+  max-width: 13ch;
+  margin-bottom: 1.35rem;
+  font-size: clamp(2.6rem, 6vw, 5.6rem);
+  font-weight: 650;
+}
+
+.dalali-about h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 3.4vw, 3.1rem);
+  font-weight: 620;
+}
+
+.dalali-about h3 {
+  margin-bottom: .7rem;
+  font-size: 1.25rem;
+  font-weight: 650;
+}
+
+.dalali-about p {
+  color: var(--color-muted);
+}
+
+.dalali-about a {
+  text-underline-offset: .22em;
+}
+
+.dalali-about a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.dalali-about__hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding: clamp(2.5rem, 7vw, 6.5rem) clamp(1.25rem, 6vw, 6rem);
+  background:
+    radial-gradient(ellipse at 85% 15%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 45%),
+    var(--surface-base, #fff);
+  border: 1px solid var(--dalali-about-border);
+  border-radius: var(--dalali-about-radius);
+}
+
+.dalali-about__hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.dalali-about__eyebrow {
+  margin-bottom: 1rem;
+  color: var(--color-primary) !important;
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: .19em;
+  line-height: 1.4;
+}
+
+.dalali-about__lead {
+  max-width: 58ch;
+  margin-bottom: 1.8rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+
+.dalali-about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.4rem;
+}
+
+.dalali-about__button {
+  display: inline-flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  padding: .8rem 1.2rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: .92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .18s ease, background-color .18s ease;
+}
+
+.dalali-about__button:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.dalali-about__button--primary {
+  color: var(--surface-base, #fff);
+  background: var(--color-primary);
+}
+
+.dalali-about__button--primary:hover {
+  color: var(--surface-base, #fff);
+  filter: brightness(.94);
+}
+
+.dalali-about__text-link,
+.dalali-about__inline-link {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.dalali-about__hero-art {
+  position: relative;
+  display: grid;
+  min-height: 340px;
+  aspect-ratio: 1 / 1;
+  place-items: center;
+  isolation: isolate;
+}
+
+.dalali-about__hero-art::before {
+  position: absolute;
+  z-index: -1;
+  width: 76%;
+  height: 76%;
+  border-radius: 50%;
+  background: var(--color-primary);
+  content: "";
+  transform: rotate(-12deg);
+}
+
+.dalali-about__art-ring {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 85%, transparent);
+  border-radius: 50%;
+}
+
+.dalali-about__art-ring--outer {
+  width: 95%;
+  height: 95%;
+}
+
+.dalali-about__art-ring--inner {
+  width: 84%;
+  height: 84%;
+  border-style: dashed;
+  opacity: .75;
+}
+
+.dalali-about__art-label {
+  display: flex;
+  width: 70%;
+  min-height: 230px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  color: var(--color-background);
+  text-align: center;
+  transform: rotate(-5deg);
+}
+
+.dalali-about__art-small {
+  color: var(--color-accent);
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .18em;
+}
+
+.dalali-about__art-large {
+  margin: .9rem 0;
+  color: var(--color-background);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4.1vw, 3.7rem);
+  font-style: italic;
+  line-height: .95;
+}
+
+.dalali-about__art-rule {
+  width: 3rem;
+  height: 1px;
+  margin: .4rem 0 .9rem;
+  background: var(--color-accent);
+}
+
+.dalali-about__intro {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding: clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6rem);
+}
+
+.dalali-about__section-heading h2 {
+  max-width: 14ch;
+}
+
+.dalali-about__intro-copy {
+  max-width: 66ch;
+  padding-top: 1.8rem;
+}
+
+.dalali-about__intro-copy p {
+  margin-bottom: 1.1rem;
+  font-size: 1.02rem;
+}
+
+.dalali-about__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--dalali-about-border);
+  border-radius: var(--dalali-about-radius);
+  background: var(--dalali-about-border);
+}
+
+.dalali-about__pillar {
+  min-height: 220px;
+  padding: clamp(1.4rem, 3vw, 2.5rem);
+  background: var(--surface-base, #fff);
+}
+
+.dalali-about__pillar-number {
+  display: inline-block;
+  margin-bottom: 2.2rem;
+  color: var(--color-accent);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.dalali-about__pillar p {
+  max-width: 34ch;
+  margin-bottom: 0;
+}
+
+.dalali-about__account {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin: clamp(3rem, 7vw, 6rem) 0;
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: var(--dalali-about-radius);
+  background: var(--dalali-about-soft);
+}
+
+.dalali-about__account > div:last-child {
+  max-width: 76ch;
+}
+
+.dalali-about__account p:not(.dalali-about__eyebrow) {
+  margin-bottom: 1rem;
+}
+
+.dalali-about__account-mark {
+  display: grid;
+  width: clamp(4rem, 8vw, 6rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  color: var(--color-primary);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.dalali-about__inline-link {
+  display: inline-flex;
+  gap: .65rem;
+  margin-top: .25rem;
+  text-decoration: none;
+}
+
+.dalali-about__inline-link:hover {
+  text-decoration: underline;
+}
+
+.dalali-about__responsibility {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem clamp(3.5rem, 8vw, 6.5rem);
+  text-align: center;
+}
+
+.dalali-about__responsibility h2 {
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+}
+
+.dalali-about__responsibility p:not(.dalali-about__eyebrow) {
+  max-width: 62ch;
+  margin: 0 auto;
+}
+
+.dalali-about__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--dalali-about-border);
+  background: var(--surface-base, #fff);
+}
+
+.dalali-about__footer h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+}
+
+.dalali-about__legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem 1.5rem;
+}
+
+.dalali-about__legal-links a {
+  color: var(--color-primary);
+  font-size: .9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.dalali-about__legal-links a:hover {
+  text-decoration: underline;
+}
+
+.dalali-about__legal-links a span {
+  color: var(--color-accent);
+}
+
+@media (max-width: 760px) {
+  .dalali-about__hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dalali-about__hero-art {
+    width: min(100%, 330px);
+    min-height: 280px;
+    margin: 0 auto;
+  }
+
+  .dalali-about__intro {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+
+  .dalali-about__intro-copy {
+    padding-top: .5rem;
+  }
+
+  .dalali-about__pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .dalali-about__pillar {
+    min-height: auto;
+  }
+
+  .dalali-about__pillar-number {
+    margin-bottom: 1rem;
+  }
+
+  .dalali-about__account {
+    grid-template-columns: 1fr;
+  }
+
+  .dalali-about__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dalali-about__button {
+    transition: none;
+  }
+
+  .dalali-about__button:hover {
+    transform: none;
+  }
+}
