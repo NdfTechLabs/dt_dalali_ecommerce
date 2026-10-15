@@ -1,227 +1,233 @@
 {% extends "templates/web.html" %}
+
 {% block title %}{{ _('Privacy Policy') }}{% endblock %}
+
 {% block head_include %}
-
 <style>
-  .dalali-policy{max-width:1000px;margin:0 auto;padding:24px 16px 56px;color:#333;line-height:1.7;font-size:15px}
-  .dalali-policy .policy-header{margin-bottom:28px}
-  .dalali-policy h1{font-size:32px;line-height:1.2;margin:0 0 10px;color:#212529}
-  .dalali-policy h2{font-size:22px;margin:30px 0 12px;color:#212529}
-  .dalali-policy h3{font-size:18px;margin:24px 0 10px;color:#212529}
-  .dalali-policy p{margin:0 0 16px}
-  .dalali-policy ul,.dalali-policy ol{margin:0 0 18px;padding-left:25px}
-  .dalali-policy li{margin-bottom:8px}
-  .dalali-policy .notice{padding:16px 18px;border:1px solid #e5e7eb;border-radius:8px;background:#f8f9fa;margin:18px 0}
-  .dalali-policy .policy-section{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px;background:#fff;overflow:hidden}
-  .dalali-policy .policy-section>summary{cursor:pointer;list-style:none;padding:16px 48px 16px 18px;background:#f8f9fa;font-weight:600;color:#212529;position:relative;user-select:none}
-  .dalali-policy .policy-section>summary::-webkit-details-marker{display:none}
-  .dalali-policy .policy-section>summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;color:#6c757d}
-  .dalali-policy .policy-section[open]>summary::after{content:"−"}
-  .dalali-policy .policy-section[open]>summary{border-bottom:1px solid #e5e7eb}
-  .dalali-policy .policy-content{padding:20px 18px}
-  .dalali-policy a{color:inherit;text-decoration:underline}
-  .dalali-policy table{width:100%;border-collapse:collapse;margin:16px 0}
-  .dalali-policy th,.dalali-policy td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
-  .dalali-policy th{background:#f8f9fa}
-  .dalali-policy .muted{color:#666;font-size:14px}
-  @media(max-width:576px){.dalali-policy{padding:16px 10px 40px;font-size:14px}.dalali-policy h1{font-size:27px}.dalali-policy .policy-content{padding:16px 14px}.dalali-policy .policy-section>summary{padding:14px 42px 14px 14px}}
+  .dalali-policy {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 16px 64px;
+    color: var(--color-text, #333);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+  .dalali-policy * { box-sizing: border-box; }
+  .dalali-policy .policy-header { margin-bottom: 28px; }
+  .dalali-policy h1 {
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    line-height: 1.2;
+    margin: 0 0 10px;
+    color: var(--color-text, #212529);
+  }
+  .dalali-policy h2 {
+    font-size: 1.35rem;
+    line-height: 1.35;
+    margin: 34px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--dalali-policy-border, #e5e7eb);
+    color: var(--color-text, #212529);
+  }
+  .dalali-policy h3 {
+    font-size: 1.08rem;
+    margin: 22px 0 8px;
+    color: var(--color-text, #212529);
+  }
+  .dalali-policy p { margin: 0 0 16px; }
+  .dalali-policy ul, .dalali-policy ol {
+    margin: 0 0 20px;
+    padding-left: 26px;
+  }
+  .dalali-policy li { margin-bottom: 8px; }
+  .dalali-policy .muted {
+    color: var(--color-muted, #666);
+    font-size: .92rem;
+  }
+  .dalali-policy .notice {
+    padding: 16px 18px;
+    border-left: 4px solid var(--color-accent, #a98a50);
+    border-radius: 8px;
+    background: var(--surface-subtle, #F6F0EA);
+    margin: 20px 0 30px;
+  }
+  .dalali-policy .google-data {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid var(--dalali-policy-border, #e5e7eb);
+    border-radius: 10px;
+    background: var(--surface-base, #fff);
+  }
+  .dalali-policy a {
+    color: var(--color-primary, #6b1832);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+  .dalali-policy a:focus-visible {
+    outline: 3px solid var(--color-accent, #a98a50);
+    outline-offset: 3px;
+  }
+  .dalali-policy .policy-contact {
+    padding: 18px;
+    border-radius: 10px;
+    background: var(--surface-subtle, #F6F0EA);
+  }
+  @media (max-width: 600px) {
+    .dalali-policy { padding: 20px 14px 44px; font-size: 15px; }
+    .dalali-policy h2 { margin-top: 28px; }
+    .dalali-policy .google-data { padding: 15px; }
+  }
 </style>
-
 {% endblock %}
+
 {% block page_content %}
-<div class="dalali-policy">
-  <div class="policy-header">
-    <h1>Privacy Policy</h1>
-    <p class="muted">Dalali Winehouse Ltd · Effective date: 28 September 2026 · Last updated: 28 September 2026</p>
-  </div>
+<main class="dalali-policy" aria-labelledby="dalali-privacy-title">
+  <header class="policy-header">
+    <h1 id="dalali-privacy-title">Privacy Policy</h1>
+    <p class="muted">Dalali Winehouse Ltd · Effective date: 15 October 2026 · Last updated: 15 October 2026</p>
+  </header>
 
   <div class="notice">
-    <strong>Important:</strong> This Privacy Policy explains how Dalali Winehouse Ltd collects, uses, stores, discloses and protects personal information when you use our website, create an account, place an order, contact us, or use Google Sign-In. It should be read together with our Terms & Conditions, Customer Service Policy and Refund & Returns Policy.
+    <strong>About this policy.</strong>
+    This Privacy Policy explains how Dalali Winehouse Ltd collects, uses, stores, discloses and protects personal information when you browse our website, create or use an account, place an order, contact us, or choose Google Sign-In. Please also read our
+    <a href="/TsandCs">Terms &amp; Conditions</a>.
   </div>
 
-  <details class="policy-section" open>
-    <summary>1. Who we are and what this policy covers</summary>
-    <div class="policy-content">
-      <p>Dalali Winehouse Ltd (“Dalali”, “we”, “us” or “our”) operates the Dalali Winehouse online storefront and related customer services at <a href="https://dalaliwinehouseltd.com">dalaliwinehouseltd.com</a>.</p>
-      <p>This policy applies to personal information collected through our website, customer accounts, orders, enquiries, customer support interactions and authentication services used by the website.</p>
-      <p>For privacy enquiries or requests to exercise your data rights, contact us using the customer-service details published on this website.</p>
-    </div>
-  </details>
+  <section aria-labelledby="privacy-who">
+    <h2 id="privacy-who">1. Who we are and what this policy covers</h2>
+    <p>Dalali Winehouse Ltd (“Dalali”, “we”, “us” or “our”) operates the Dalali Winehouse online storefront at <a href="https://dalaliwinehouseltd.com/">dalaliwinehouseltd.com</a> and provides related customer services.</p>
+    <p>This policy applies to personal information collected through our website, customer accounts, product browsing, orders, enquiries, customer-support interactions and authentication services used by the website.</p>
+    <p>For privacy enquiries or requests concerning your personal information, use the contact details in section 15.</p>
+  </section>
 
-  <details class="policy-section">
-    <summary>2. Legal purchase age and responsible access</summary>
-    <div class="policy-content">
-      <p>Our products include alcoholic beverages. You must not use our services or provide personal information for the purpose of purchasing alcohol if you are below the legal purchase age applicable to the transaction and the jurisdiction in which you are accessing or purchasing from us.</p>
-      <p>We may use information necessary for age or access controls where required by law or our service configuration. We do not knowingly seek to collect personal information from persons who are not legally permitted to purchase alcohol.</p>
-    </div>
-  </details>
+  <section aria-labelledby="privacy-age">
+    <h2 id="privacy-age">2. Legal purchase age and responsible access</h2>
+    <p>Our products include alcoholic beverages. You must meet the legal purchase age applicable to the transaction and jurisdiction before purchasing alcohol through our services.</p>
+    <p>Where required by law or by the operation of our services, we may use information necessary to support age or access controls. We do not knowingly seek personal information from people who are not legally permitted to purchase alcohol.</p>
+  </section>
 
-  <details class="policy-section">
-    <summary>3. Personal information we collect</summary>
-    <div class="policy-content">
-      <p>Depending on how you interact with us, we may collect:</p>
+  <section aria-labelledby="privacy-collect">
+    <h2 id="privacy-collect">3. Personal information we collect</h2>
+    <p>The information we collect depends on how you interact with Dalali. It may include:</p>
+    <ul>
+      <li><strong>Identity and contact information:</strong> name, email address, telephone number, billing address and delivery address.</li>
+      <li><strong>Account information:</strong> account identifier, sign-in method, account preferences and information needed to maintain account security.</li>
+      <li><strong>Google account information:</strong> where you choose Google Sign-In and grant the relevant permission, basic profile information such as your name, email address, profile picture and Google account identifier, as made available by Google and requested by our sign-in implementation.</li>
+      <li><strong>Order information:</strong> products viewed, items added to a basket, order details, delivery information, invoices and transaction references.</li>
+      <li><strong>Payment information:</strong> information needed to process or reconcile payments. Where a payment provider processes card or mobile-money credentials directly, we may receive transaction status and reference information rather than the underlying credentials.</li>
+      <li><strong>Customer communications:</strong> enquiries, complaints, reviews and information you choose to provide to customer support.</li>
+      <li><strong>Technical and usage information:</strong> IP address, browser and device information, operating system, pages visited, timestamps, error information, security logs and cookie-related information.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="privacy-google">
+    <h2 id="privacy-google">4. Google Sign-In and Google user data</h2>
+    <div class="google-data">
+      <h3>Information we receive</h3>
+      <p>If you choose to create or access a Dalali account using Google Sign-In, Google provides the account information permitted by the sign-in permissions we request. Depending on the permissions and implementation, this may include your name, email address, profile picture and a Google account identifier.</p>
+
+      <h3>How we use it</h3>
+      <p>We use this information to authenticate your identity, create or access your Dalali account, associate your Google identity with the appropriate Dalali account, help protect account security and provide account-related services. We do not receive your Google password through Google Sign-In.</p>
+
+      <h3>Storage and retention</h3>
+      <p>Information received through Google Sign-In may be stored in Dalali's account and application records to the extent necessary for the account and services described in this policy. We retain it only for as long as reasonably necessary for those purposes, subject to applicable legal, security, accounting and dispute-resolution requirements. When it is no longer required, we will delete or securely dispose of it where appropriate, subject to lawful retention requirements.</p>
+
+      <h3>Sharing</h3>
+      <p>We do not sell Google user data. We may process or disclose the minimum information necessary to service providers that support our website hosting, application infrastructure, authentication, security and customer support, where those providers need the information to provide services to Dalali. We do not disclose Google user data to third parties for their independent advertising purposes.</p>
+
+      <h3>Your choices and requests</h3>
+      <p>You can choose not to use Google Sign-In and may use another sign-in method made available by the website. You may request access to, correction of or deletion of personal information associated with your account by contacting us using the details in section 15. We may need to verify your identity before acting on a request, and some records may need to be retained where the law requires it.</p>
+
+      <h3>Google API Services User Data Policy</h3>
+      <p>Dalali Winehouse's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    </div>
+    <p>The specific Google information we receive is determined by the permissions requested by our actual sign-in implementation. We do not intend to use Google user data for advertising or for purposes unrelated to providing and securing the account features described above.</p>
+  </section>
+
+  <section aria-labelledby="privacy-sources">
+    <h2 id="privacy-sources">5. How we collect information</h2>
+    <p>We collect information when you browse the website, create or use an account, sign in, place an order, request delivery, contact customer service, submit a review or enquiry, or otherwise interact with Dalali.</p>
+    <p>We also receive certain technical information when your browser or device connects to our website. Service providers may provide information necessary for authentication, payment processing, delivery, hosting, security and analytics, depending on which services are enabled.</p>
+  </section>
+
+  <section aria-labelledby="privacy-uses">
+    <h2 id="privacy-uses">6. Why we use personal information</h2>
+    <p>Subject to applicable law, we may use personal information to:</p>
+    <ul>
+      <li>provide the website, customer accounts and services you request;</li>
+      <li>authenticate users and maintain account security;</li>
+      <li>process, fulfil and deliver orders;</li>
+      <li>respond to enquiries, complaints and support requests;</li>
+      <li>process payments and maintain transaction records;</li>
+      <li>maintain, troubleshoot and improve website functionality and security;</li>
+      <li>detect and prevent fraud, abuse and unauthorized activity;</li>
+      <li>comply with applicable legal, regulatory, tax and accounting obligations; and</li>
+      <li>send marketing communications where permitted and, where required, with your consent.</li>
+    </ul>
+    <p>We will not use Google user data for purposes inconsistent with this policy or Google's applicable user-data requirements.</p>
+  </section>
+
+  <section aria-labelledby="privacy-grounds">
+    <h2 id="privacy-grounds">7. Legal grounds and your choices</h2>
+    <p>Depending on the circumstances and applicable law, we process personal information because it is necessary to provide a service or perform a contract, comply with a legal obligation, protect legitimate business interests, or because you have given consent.</p>
+    <p>Where processing is based on consent, you may withdraw that consent where applicable. You may opt out of marketing communications using an unsubscribe mechanism provided in the communication or by contacting us.</p>
+  </section>
+
+  <section aria-labelledby="privacy-sharing">
+    <h2 id="privacy-sharing">8. Sharing and service providers</h2>
+    <p>We may share personal information with service providers that perform services on our behalf, such as hosting and software infrastructure, authentication, payment processing, delivery, customer support, security, accounting and professional services. They may process information only as needed to provide their services to us and subject to appropriate legal or contractual safeguards.</p>
+    <p>We may also disclose information where required by law, court order or a lawful request from a competent authority, or where reasonably necessary to protect our rights, customers, systems or property.</p>
+    <p>We do not sell Google user data or permit service providers to use it for their own independent advertising purposes.</p>
+  </section>
+
+  <section aria-labelledby="privacy-transfers">
+    <h2 id="privacy-transfers">9. International transfers</h2>
+    <p>Some service providers may process information outside Kenya. Where personal information is transferred outside Kenya, we will take steps required by applicable data-protection law to provide appropriate safeguards.</p>
+  </section>
+
+  <section aria-labelledby="privacy-security">
+    <h2 id="privacy-security">10. Security</h2>
+    <p>We use reasonable technical, organizational and administrative measures designed to protect personal information against unauthorized access, alteration, disclosure, loss or destruction. Measures may include access controls, authentication, encryption where appropriate, logging, backups and security monitoring.</p>
+    <p>No internet transmission or storage system can be guaranteed to be completely secure. If you believe your account or interaction with Dalali has been compromised, contact us promptly.</p>
+  </section>
+
+  <section aria-labelledby="privacy-retention">
+    <h2 id="privacy-retention">11. Retention and deletion</h2>
+    <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, including account administration, order fulfilment, customer support, security, dispute resolution and legal, tax and accounting obligations.</p>
+    <p>When information is no longer required, we will delete, anonymize or securely dispose of it where appropriate, subject to lawful retention requirements.</p>
+    <p>You may request deletion of your account or personal information by contacting us. Some information may need to be retained where required by law or where necessary to establish, exercise or defend legal claims.</p>
+  </section>
+
+  <section aria-labelledby="privacy-rights">
+    <h2 id="privacy-rights">12. Your data-protection rights</h2>
+    <p>Subject to applicable law, you may have the right to be informed about processing, access your personal information, request correction of inaccurate information, object to certain processing, or request deletion where the law permits. You may have additional rights under applicable data-protection law.</p>
+    <p>To exercise a right, contact us using the details in section 15. We may need to verify your identity before completing a request.</p>
+  </section>
+
+  <section aria-labelledby="privacy-cookies">
+    <h2 id="privacy-cookies">13. Cookies and similar technologies</h2>
+    <p>We use strictly necessary cookies and may use functional, analytics or other non-essential cookies where permitted and, where required, after obtaining your consent.</p>
+    <p>Cookies may support login sessions, shopping baskets, website functionality, security, analytics and preferences. Third-party services may also set cookies when their features are enabled.</p>
+    <p>You can manage cookies through available website controls and your browser settings. Blocking necessary cookies may affect website functionality.</p>
+  </section>
+
+  <section aria-labelledby="privacy-changes">
+    <h2 id="privacy-changes">14. Changes to this Privacy Policy</h2>
+    <p>We may update this policy when our services, technology, legal obligations or data practices change. The current version will be published on this page with its effective date. Where a material change affects how we use Google user data, we will update the relevant disclosure before or when the changed processing begins, as appropriate.</p>
+  </section>
+
+  <section aria-labelledby="privacy-contact">
+    <h2 id="privacy-contact">15. Contact us</h2>
+    <div class="policy-contact">
+      <p>For privacy questions, account concerns, or requests to access, correct or delete personal information, contact Dalali Winehouse Ltd:</p>
       <ul>
-        <li><strong>Identity and contact information:</strong> name, email address, telephone number, billing or delivery address and similar contact details.</li>
-        <li><strong>Account information:</strong> username, authentication information and account preferences. We do not receive your Google password when you use Google Sign-In.</li>
-        <li><strong>Order information:</strong> products viewed, added to a basket or purchased, order details, delivery information, invoices and transaction references.</li>
-        <li><strong>Payment information:</strong> information necessary to process or reconcile a payment. Where a payment provider processes card or mobile-money details directly, we may receive transaction status and reference information rather than the underlying payment credentials.</li>
-        <li><strong>Customer communications:</strong> enquiries, complaints, reviews, survey responses and other information you choose to provide.</li>
-        <li><strong>Technical information:</strong> IP address, browser and device information, operating system, pages visited, timestamps, error information and security logs.</li>
-        <li><strong>Cookie and usage information:</strong> information collected through cookies and similar technologies, subject to your cookie choices where consent is required.</li>
+        <li><strong>Email:</strong> <a href="mailto:info@dalaliwinehouseltd.com">info@dalaliwinehouseltd.com</a></li>
+        <li><strong>Phone / WhatsApp:</strong> <a href="tel:+254728583967">+254 728 583 967</a></li>
+        <li><strong>Website:</strong> <a href="https://dalaliwinehouseltd.com/">dalaliwinehouseltd.com</a></li>
       </ul>
     </div>
-  </details>
+  </section>
 
-  <details class="policy-section">
-    <summary>4. Google User Data</summary>
-    <div class="policy-content">
-      <p>
-	If you choose to sign in or create an account using Google Sign-In,
-	Dalali Winehouse receives information from Google that is necessary
-	to authenticate your account. This may include your name, email
-	address, profile picture, and Google account identifier.
-	</p>
-
-	<p>
-	We use this information to create and authenticate your Dalali
-	Winehouse account, maintain account security, associate your
-	Google identity with your Dalali account, and provide account-related
-	services.
-	</p>
-
-	<p>
-	We do not receive or store your Google password.
-	</p>
-
-	<p>
-	We do not sell Google user data or use Google user data for
-	advertising. We do not use Google user data for unrelated purposes.
-	</p>
-
-	<p>
-	Google user data is stored only for as long as necessary to provide
-	the account and services described in this policy, subject to
-	applicable legal and operational retention requirements.
-	</p>
-
-	<p>
-	Google user data may be disclosed to service providers that process
-	information on our behalf for hosting, authentication, security,
-	customer support, or other services necessary to operate the
-	application. We do not disclose Google user data to third parties
-	for their own advertising purposes.
-	</p>
-
-	<p>
-	You may request access to, correction of, or deletion of your
-	personal information by contacting Dalali Winehouse through our
-	customer service channels.
-	</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>5. How and when we collect information</summary>
-    <div class="policy-content">
-      <p>We collect information when you create or use an account, sign in, place an order, request delivery, contact customer service, submit a review or enquiry, subscribe to communications, or otherwise interact with the website.</p>
-      <p>We also automatically receive certain technical information when your browser or device connects to our website. We may receive limited information from service providers that help us operate authentication, payments, delivery, hosting, security and analytics.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>6. Why we use personal information</summary>
-    <div class="policy-content">
-      <ul>
-        <li>to provide the website, accounts and services you request;</li>
-        <li>to process, fulfil and deliver orders;</li>
-        <li>to authenticate users and maintain account security;</li>
-        <li>to respond to enquiries, complaints and support requests;</li>
-        <li>to process and reconcile payments and maintain transaction records;</li>
-        <li>to maintain, troubleshoot and improve the website and its security;</li>
-        <li>to comply with applicable legal, regulatory, tax and accounting requirements;</li>
-        <li>to detect and prevent fraud, abuse and unauthorized activity; and</li>
-        <li>where permitted and, where required, with your consent, to send marketing communications and measure their effectiveness.</li>
-      </ul>
-      <p>We will not use Google user data for a purpose that is inconsistent with the disclosures in this Privacy Policy.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>7. Legal grounds and your choices</summary>
-    <div class="policy-content">
-      <p>Depending on the circumstances, we process personal information because it is necessary to provide a service or perform a contract, comply with a legal obligation, protect our legitimate business interests, or because you have given consent.</p>
-      <p>Where processing is based on consent, you may withdraw that consent where applicable. You may opt out of marketing communications at any time by using an unsubscribe mechanism provided in the communication or contacting us.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>8. Sharing and service providers</summary>
-    <div class="policy-content">
-      <p>We may share personal information with service providers that perform services on our behalf, such as hosting, website and software infrastructure, authentication, payment processing, delivery, customer support, security, accounting and professional services.</p>
-      <p>We may also disclose information where required by law, court order or a lawful request from a competent authority, or where necessary to protect our rights, customers, systems or property.</p>
-      <p>Service providers should only process information for the services they provide to us and subject to appropriate contractual or legal safeguards.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>9. International transfers</summary>
-    <div class="policy-content">
-      <p>Some service providers may process information outside Kenya. Where personal information is transferred outside Kenya, we will take steps required by applicable data-protection law to provide appropriate safeguards, including relying on applicable contractual, legal or consent-based mechanisms where required.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>10. Security</summary>
-    <div class="policy-content">
-      <p>We use reasonable technical, organizational and administrative measures designed to protect personal information against unauthorized access, alteration, disclosure, loss or destruction. These measures may include access controls, authentication, encryption where appropriate, logging, backups and security monitoring.</p>
-      <p>No internet transmission or storage system can be guaranteed to be completely secure. If you believe your account or interaction with us has been compromised, contact customer service promptly.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>11. Retention and deletion</summary>
-    <div class="policy-content">
-      <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, including account administration, order fulfilment, customer support, security, dispute resolution and legal, tax and accounting obligations.</p>
-      <p>When information is no longer required, we will delete, anonymize or securely dispose of it where appropriate, subject to lawful retention requirements.</p>
-      <p>You may request deletion of your account or personal information by contacting us. Some information may need to be retained where required by law or where necessary to establish, exercise or defend legal claims.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>12. Your data-protection rights</summary>
-    <div class="policy-content">
-      <p>Subject to applicable law, you may have rights to be informed about processing, access your personal information, object to certain processing, request correction of inaccurate information and request deletion where the law permits. You may also have additional rights under applicable data-protection law.</p>
-      <p>To exercise a right, contact our customer-service team using the details on this website. We may need to verify your identity before completing a request.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>13. Cookies and similar technologies</summary>
-    <div class="policy-content">
-      <p>We use strictly necessary cookies and may use functional, analytics or other non-essential cookies where permitted and, where required, after obtaining your consent.</p>
-      <p>Cookies may support login sessions, shopping baskets, website functionality, security, analytics and preferences. Third-party services may also set cookies when their features are enabled.</p>
-      <p>You can manage cookies through available website controls and your browser settings. Blocking necessary cookies may affect site functionality.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>14. Changes to this Privacy Policy</summary>
-    <div class="policy-content">
-      <p>We may update this policy when our services, technology, legal obligations or data practices change. The current version will be published on this page with its effective date. Where a material change affects how we use Google user data, we will update the relevant disclosure before or when the changed processing begins, as appropriate.</p>
-    </div>
-  </details>
-
-  <details class="policy-section">
-    <summary>15. Contact</summary>
-    <div class="policy-content">
-      <p>For privacy, account, data-access or deletion requests, contact Dalali Winehouse Ltd through our customer-service channels:</p>
-      <ul>
-        <li>Email: <a href="mailto:customercare@dalaliwinehouse.com">info@dalaliwinehouseltd.com</a></li>
-        <li>Phone / WhatsApp: <a href="tel:+254728583967">+254 728 583 967</a></li>
-        <li>Website: <a href="https://dalaliwinehouseltd.com">dalaliwinehouseltd.com</a></li>
-      </ul>
-    </div>
-  </details>
-
-</div>
+  <p class="muted">This policy describes Dalali's intended data practices. It must be kept accurate and updated to match the services, sign-in permissions, data flows and service providers actually used by the website.</p>
+</main>
 {% endblock %}
