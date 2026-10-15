@@ -1,11 +1,9 @@
-<!--
-  Dalali Winehouse — About page content
-  Intended for a Frappe Web Page HTML/content field.
-  CSS is in dalali-about.css. Keep this content publicly accessible without login.
--->
-<head>
-  <link rel="stylesheet" href="/assets/dt_dalali_ecommerce/css/about.css?v=1.8">
-</head>
+{% extends "templates/web.html" %}
+
+{% block title %}About Dalali{% endblock %}
+
+{% block page_content %}
+
 <main class="dalali-about" aria-labelledby="dalali-about-title">
   <section class="dalali-about__hero">
     <div class="dalali-about__hero-copy">
@@ -111,3 +109,5 @@
     </nav>
   </footer>
 </main>
+
+{% endblock %}

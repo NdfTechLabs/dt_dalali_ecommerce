@@ -250,12 +250,31 @@ function injectUnitCaseToggle(itemCode, bottlePrice, caseSize, tiers) {
 		bindAction()
 }
 
+function getCustomerAuthAction() {
+    return window.cart_settings?.redirect_on_action || "";
+}
+
+
 /* Shared cart action used by both PDP CTA buttons */
 function pdpCartAction(itemCode, qty, buyNow, btn) {
 	if (frappe.session.user === "Guest") {
-		if (localStorage) localStorage.setItem("last_visited", window.location.pathname);
-		window.location.href = "/login?redirect-to=" + encodeURIComponent(window.location.pathname);
-		return;
+					if (localStorage) {
+									localStorage.setItem("last_visited", window.location.pathname);
+					}
+
+					const redirectAction = getCustomerAuthAction();
+
+					if (redirectAction) {
+									// Use the destination configured in Webshop Settings.
+									window.location.href = redirectAction;
+					} else {
+									// Fall back to the standard Frappe login page.
+									window.location.href =
+													"/login?redirect-to=" +
+													encodeURIComponent(window.location.pathname);
+					}
+
+					return;
 	}
 
 	const origHTML = btn.innerHTML;
@@ -1045,7 +1064,6 @@ function attachCatalogSidebarToggle() {
     }
 
     sidebar.dataset.toggleAttached = "1";
-				console.log("attached");
 				
     toggle.addEventListener("click", () => {
         const isOpen =
