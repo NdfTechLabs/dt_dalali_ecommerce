@@ -2494,8 +2494,10 @@ body {
   background: #fff;
   border: 1.5px solid var(--dalali-border);
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: border-color 0.18s, box-shadow 0.18s;
+  position: relative;
+  z-index: 10;
 }
 
 .dalali-catalog-search-row:focus-within {
@@ -2843,7 +2845,7 @@ body {
 }
 
 /* Cart icon button — outline */
-.dalali-cat-btn-add {
+.dalali-cat-footer .dalali-cat-btn-wishlist, .dalali-cat-footer .dalali-cat-btn-add {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2857,18 +2859,14 @@ body {
   transition: background 0.15s, color 0.15s;
 }
 
-.dalali-cat-btn-add:hover {
-  background: rgba(123, 29, 43, 0.06);
-  color: var(--dalali-claret-d);
-}
 
-.dalali-cat-btn-add.added {
+.dalali-cat-footer .dalali-cat-btn-wishlist.added, .dalali-cat-footer .dalali-cat-btn-add.added {
   background: rgba(34, 197, 94, 0.1);
   color: #15803d;
 }
 
 /* Buy Now — solid claret */
-.dalali-cat-btn-buy {
+.dalali-cat-btn-contact, .dalali-cat-btn-buy {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2881,9 +2879,10 @@ body {
   letter-spacing: 0.01em;
   transition: background 0.18s;
   text-align: center;
+  border: 0px;
 }
 
-.dalali-cat-btn-buy:hover {
+.dalali-cat-btn-contact, .dalali-cat-btn-buy:hover {
   background: var(--dalali-claret-d);
   text-decoration: none !important;
 }
@@ -3417,4 +3416,197 @@ a.dalali-page-btn:hover {
 
 .dt-footer a:hover {
   text-decoration: underline;
+}
+
+.dalali-search-results {
+  position: absolute;
+
+  top: calc(100% + 8px);   /* just below input */
+  left: 0;
+  width: 100%;             /* full width of container */
+  max-height: 400px;
+
+  z-index: 1000;
+
+  border-radius: 12px;
+  padding: 8px;
+
+  /* glass effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  background: rgba(255, 255, 255, 0.85);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  display: none;   /* controlled by JS */
+  overflow: scroll;
+}
+.dt-search-section{
+ overflow-y: scroll;
+ position: relative;
+}
+
+/* Open via JS (mobile toggle) */
+.dalali-search-row.open .dalali-search-results {
+  display: block;
+}
+
+/* Open via focus (desktop typing) */
+.dalali-search-row:focus-within .dalali-search-results {
+  display: block;
+}
+.dalali-search-results {
+  display: none;
+}
+
+.dalali-search-results.show {
+  display: block;
+}
+
+
+
+.close_dalali_search_results {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: rgba(0,0,0,0.05);
+  backdrop-filter: blur(6px);
+
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.close_dalali_search_results:hover {
+  background: rgba(0,0,0,0.1);
+  transform: scale(1.05);
+}
+
+/* =========================================
+   STOCK AVAILABILITY BADGES
+   ========================================= */
+
+.dalali-cat-card-img-wrap {
+    position: relative;
+}
+
+.dalali-stock-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.dalali-stock-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.dalali-stock-badge--in {
+    color: #166534;
+    background: rgba(220, 252, 231, 0.95);
+}
+
+.dalali-stock-badge--in .dalali-stock-dot {
+    background: #16a34a;
+}
+
+.dalali-stock-badge--low {
+    color: #92400e;
+    background: rgba(254, 243, 199, 0.96);
+}
+
+.dalali-stock-badge--low .dalali-stock-dot {
+    background: #d97706;
+}
+
+.dalali-stock-badge--out {
+    color: #991b1b;
+    background: rgba(254, 226, 226, 0.96);
+}
+
+.dalali-stock-badge--out .dalali-stock-dot {
+    background: #dc2626;
+}
+
+/* =========================================
+   FOOTER ACTIONS
+   ========================================= */
+
+.dalali-cat-footer .dalali-cat-btn-wishlist svg, .dalali-cat-btn-add svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+.dalali-cat-footer .dalali-cat-btn-wishlist:hover, .dalali-cat-footer .dalali-cat-btn-add:hover {
+    background: rgba(123, 29, 43, 0.06);
+    color: var(--dalali-claret-d);
+}
+
+.dalali-cat-footer .dalali-cat-btn-wishlist:focus-visible, .dalali-cat-footer .dalali-cat-btn-add:focus-visible,
+.dalali-cat-footer .dalali-cat-btn-contact:focus-visible, .dalali-cat-footer .dalali-cat-btn-buy:focus-visible {
+    outline: 2px solid var(--dalali-claret);
+    outline-offset: -3px;
+}
+
+/* Added to cart feedback */
+
+.dalali-cat-footer .dalali-cat-btn-wishlist.added, .dalali-cat-btn-add.added {
+    background: rgba(34, 197, 94, 0.1);
+    color: #15803d;
+}
+
+/* =========================================
+   TEXT BUTTON — BUY NOW / CONTACT US
+   ========================================= */
+
+.dalali-cat-footer .dalali-cat-btn-buy:hover {
+    background: var(--dalali-claret-d);
+    color: var(--dalali-ivory) !important;
+    text-decoration: none !important;
+}
+
+/* Contact Us inherits the same full-width button styling */
+.dalali-cat-footer .dalali-cat-btn-contact, .dalali-cat-btn-contact {
+    width: 100%;
+}
+
+/* Prevent inherited styles from changing the grid */
+.dalali-cat-footer .dalali-cat-btn-add,
+.dalali-cat-footer .dalali-cat-btn-buy,.dalali-cat-footer .dalali-cat-btn-wishlist {
+    box-sizing: border-box;
 }

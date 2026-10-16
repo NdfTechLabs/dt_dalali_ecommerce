@@ -22,6 +22,7 @@ import json
 import frappe
 from frappe.utils import flt, cint
 from urllib.parse import quote
+from webshop.webshop.shopping_cart.cart import get_cart_quotation
 
 CATALOG_PARENT = "Dalali Wholesale Catalog"
 PAGE_SIZE = 40   # 5 cols × 8 rows
@@ -283,12 +284,20 @@ def get_context(context):
     where = " AND ".join(conds)
     base_join = """
         FROM `tabWebsite Item` wi
-        INNER JOIN `tabItem` i ON i.name = wi.item_code
-        INNER JOIN `tabItem Group` ig ON ig.name = i.item_group
+
+        INNER JOIN `tabItem` i
+            ON i.name = wi.item_code
+
+        INNER JOIN `tabItem Group` ig
+            ON ig.name = i.item_group
+
         LEFT JOIN `tabItem Price` ip
             ON ip.item_code = wi.item_code
-           AND ip.selling = 1
-           AND ip.price_list = 'Standard Selling'
+            AND ip.selling = 1
+            AND ip.price_list = 'Standard Selling'
+
+        LEFT JOIN `tabBin` b
+            ON b.item_code = wi.item_code
     """
 
     total_count = frappe.db.sql(
@@ -299,18 +308,40 @@ def get_context(context):
     offset = (page - 1) * PAGE_SIZE
     rows = frappe.db.sql(
         f"""
-        SELECT
-            wi.item_code, wi.web_item_name, wi.website_image,
-            wi.item_group, wi.route,
-            i.brand, i.custom_case_size, i.custom_region,
-            i.custom_origin_country, i.custom_wine_varietal,
-            i.custom_alcohol_content, i.custom_vintage_year,
-            COALESCE(ip.price_list_rate, 0) AS price,
-            COALESCE(ip.currency, 'KES')    AS currency
-        {base_join}
-        WHERE {where}
-        ORDER BY wi.ranking DESC, wi.modified DESC
-        LIMIT %s OFFSET %s
+            SELECT
+                wi.item_code,
+                wi.web_item_name,
+                wi.website_image,
+                wi.item_group,
+                wi.route,
+
+                i.brand,
+                i.custom_case_size,
+                i.custom_region,
+                i.custom_origin_country,
+                i.custom_wine_varietal,
+                i.custom_alcohol_content,
+                i.custom_vintage_year,
+
+                COALESCE(ip.price_list_rate, 0) AS price,
+                COALESCE(ip.currency, 'KES') AS currency,
+
+                COALESCE(b.actual_qty, 0) AS stock_qty,
+                COALESCE(b.reserved_qty, 0) AS reserved_qty,
+
+                GREATEST(
+                    COALESCE(b.actual_qty, 0) -
+                    COALESCE(b.reserved_qty, 0),
+                    0
+                ) AS available_qty
+
+            {base_join}
+
+            WHERE {where}
+
+            ORDER BY wi.ranking DESC, wi.modified DESC
+
+            LIMIT %s OFFSET %s
         """,
         vals + [PAGE_SIZE, offset],
         as_dict=True,
@@ -324,6 +355,20 @@ def get_context(context):
         r["url"]        = f"/{r['route']}" if r.get("route") else "#"
         vintage         = r.get("custom_vintage_year")
         r["vintage_display"] = str(int(vintage)) if vintage and int(vintage) > 0 else ""
+
+        # Stock availability
+        r["stock_qty"] = flt(r.get("stock_qty"))
+        r["reserved_qty"] = flt(r.get("reserved_qty"))
+        r["available_qty"] = flt(r.get("available_qty"))
+
+        r["in_stock"] = r["available_qty"] > 0
+
+        if r["available_qty"] <= 0:
+            r["stock_status"] = "Out of Stock"
+        elif r["available_qty"] <= 5:
+            r["stock_status"] = "Low Stock"
+        else:
+            r["stock_status"] = "In Stock"
 
     context.items        = rows
     context.total_count  = total_count
@@ -354,6 +399,16 @@ def get_context(context):
     context.clear_vintage_url  = _clear("custom_vintage")   if active_vintage  else ""
     context.clear_brands_url   = _clear("brands")           if active_brands   else ""
 
+    shopping_cart = get_cart_quotation()
+    if not shopping_cart:
+        shopping_cart = {}
+
+    cart_settings = shopping_cart.pop("cart_settings", None)
+
+    context.shopping_cart_json = frappe.as_json(shopping_cart)
+    context.cart_settings_json = frappe.as_json(
+        cart_settings.as_dict() if cart_settings else {}
+    )
     # ── expose base_params to template (for JS data attribute) ───────────────
     context.base_params = base_params
     return context

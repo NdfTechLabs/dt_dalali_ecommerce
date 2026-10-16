@@ -321,6 +321,8 @@
 				<button type="submit" class="dalali-catalog-search-btn">
 					{{ _("Search") }}
 				</button>
+				<div	class="dalali-search-results">
+				</div>
 			</div>
 		</form>
 
@@ -425,6 +427,30 @@
 						{% endif %}
 					</a>
 
+					<!-- Stock availability indicator -->
+					<div
+									class="dalali-stock-badge
+													{% if not item.in_stock %}
+																	dalali-stock-badge--out
+													{% elif item.available_qty <= 5 %}
+																	dalali-stock-badge--low
+													{% else %}
+																	dalali-stock-badge--in
+													{% endif %}"
+									role="status"
+									aria-label="{{ _(item.stock_status) }}">
+
+									<span class="dalali-stock-dot" aria-hidden="true"></span>
+
+									{% if not item.in_stock %}
+													{{ _("Out of Stock") }}
+									{% elif item.available_qty <= 5 %}
+													{{ _("Only {0} left").format(item.available_qty | int) }}
+									{% else %}
+													{{ _("In Stock") }}
+									{% endif %}
+					</div>
+
 					<!-- Wishlist heart button -->
 					<button
 						class="dalali-wishlist-btn"
@@ -492,22 +518,86 @@
 
 				<!-- ── Split CTA Footer ── -->
 				<div class="dalali-cat-footer">
-					<button
-						class="dalali-cat-btn-add"
-						type="button"
-						data-item-code="{{ item.item_code | e }}"
-						aria-label="{{ _('Add to cart') }}"
-						title="{{ _('Add to cart') }}">
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-							stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-							stroke-linejoin="round" aria-hidden="true">
-							<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-						</svg>
-					</button>
-					<a href="{{ item.url | e }}" class="dalali-cat-btn-buy">
-						{{ _("Buy Now") }}
-					</a>
+
+								{% if item.in_stock %}
+
+												<!-- Add to Cart -->
+												<button
+																class="dalali-cat-btn-add"
+																type="button"
+																data-item-code="{{ item.item_code | e }}"
+																data-case-size="{{ item.case_size }}"
+																data-available-qty="{{ item.available_qty }}"
+																aria-label="{{ _('Add to cart') }}"
+																title="{{ _('Add to cart') }}">
+
+																<svg
+																				width="14"
+																				height="14"
+																				viewBox="0 0 24 24"
+																				fill="none"
+																				stroke="currentColor"
+																				stroke-width="2.5"
+																				stroke-linecap="round"
+																				stroke-linejoin="round"
+																				aria-hidden="true"
+																				class="dalali-cart-icon">
+
+																				<circle cx="9" cy="21" r="1"/>
+																				<circle cx="20" cy="21" r="1"/>
+																				<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+																</svg>
+												</button>
+
+												<!-- Buy Now -->
+												<button
+																class="dalali-cat-btn-buy"
+																type="button"
+																data-item-code="{{ item.item_code | e }}"
+																data-case-size="{{ item.case_size }}"
+																data-available-qty="{{ item.available_qty }}">
+
+																{{ _("Buy Now") }}
+												</button>
+
+								{% else %}
+
+												<!-- Out of Stock: Wishlist -->
+												<button
+																class="dalali-cat-btn-wishlist"
+																type="button"
+																data-item-code="{{ item.item_code | e }}"
+																aria-label="{{ _('Add to wishlist') }}"
+																title="{{ _('Add to wishlist') }}">
+
+																<svg
+																				width="15"
+																				height="15"
+																				viewBox="0 0 24 24"
+																				fill="none"
+																				stroke="currentColor"
+																				stroke-width="2"
+																				stroke-linecap="round"
+																				stroke-linejoin="round"
+																				aria-hidden="true"
+																				class="dalali-wishlist-icon">
+
+																				<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+																</svg>
+												</button>
+
+												<!-- Contact Us -->
+												<button
+																type="button"
+																data-item-code="{{ item.web_item_name | e }}"
+																class="dalali-cat-btn-contact btn-inquiry"
+																aria-label="{{ _('Contact us about {0}').format(item.web_item_name) | e }}">
+
+																{{ _("Contact Us") }}
+											</button>
+
+								{% endif %}
+
 				</div><!-- /.dalali-cat-footer -->
 
 			</article>
@@ -588,4 +678,15 @@
 
 </div><!-- /.dalali-catalog-layout -->
 
+		<script >
+				window.shopping_cart = {{ shopping_cart_json }};
+				window.cart_settings = {{ cart_settings_json }};
+		</script>
+{% endblock %}
+{% block base_scripts %}
+<!-- js should be loaded in body! -->
+<script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+{{ include_script("frappe-web.bundle.js") }}
+{{ include_script("controls.bundle.js") }}
+{{ include_script("dialog.bundle.js") }}
 {% endblock %}

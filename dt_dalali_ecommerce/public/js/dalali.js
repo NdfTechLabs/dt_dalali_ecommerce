@@ -923,21 +923,106 @@ function initTierInfoButtons() {
 
 /* Wishlist toggle — client-side only (no API yet) */
 function initWishlistButtons() {
-	document.querySelectorAll(".dalali-wishlist-btn").forEach(function (btn) {
-		btn.addEventListener("click", function (e) {
-			e.preventDefault();
-			e.stopPropagation();
-			btn.classList.toggle("active");
-			const icon = btn.querySelector(".dalali-wishlist-icon");
-			if (icon) {
-				icon.setAttribute("fill", btn.classList.contains("active") ? "currentColor" : "none");
-			}
-			const label = btn.classList.contains("active")
-				? __("Remove from wishlist")
-				: __("Save to wishlist");
-			btn.setAttribute("aria-label", label);
-		});
-	});
+document.addEventListener("click", async function (e) {
+    const btn = e.target.closest(
+        ".dalali-wishlist-btn, .dalali-cat-btn-wishlist"
+    );
+
+    if (!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const itemCode = btn.dataset.itemCode;
+
+    if (!itemCode) {
+        console.error("Wishlist: missing item code");
+        return;
+    }
+
+    // Webshop wishlist requires authentication.
+
+				if (frappe.session.user === "Guest") {
+								if (localStorage) {
+												localStorage.setItem("last_visited", window.location.pathname);
+								}
+
+								const redirectAction = getCustomerAuthAction();
+								if (redirectAction) {
+												// Use the destination configured in Webshop Settings.
+												window.location.href = redirectAction;
+								} else {
+												// Fall back to the standard Frappe login page.
+												window.location.href =
+																"/login?redirect-to=" +
+																encodeURIComponent(window.location.pathname);
+								}
+
+								return;
+				}
+
+    if (btn.dataset.loading === "1") return;
+
+    const wasActive = btn.classList.contains("active");
+    const method = wasActive
+        ? "webshop.webshop.doctype.wishlist.wishlist.remove_from_wishlist"
+        : "webshop.webshop.doctype.wishlist.wishlist.add_to_wishlist";
+
+    btn.dataset.loading = "1";
+    btn.disabled = true;
+
+    try {
+        await frappe.call({
+            method: method,
+            args: {
+                item_code: itemCode
+            }
+        });
+
+        // Update the visual state only after the server succeeds.
+        btn.classList.toggle("active", !wasActive);
+
+        const icon = btn.querySelector(
+            ".dalali-wishlist-icon"
+        ) || btn.querySelector("svg");
+
+        if (icon) {
+            icon.setAttribute(
+                "fill",
+                !wasActive ? "currentColor" : "none"
+            );
+        }
+
+        const label = !wasActive
+            ? __("Remove from wishlist")
+            : __("Save to wishlist");
+
+        btn.setAttribute("aria-label", label);
+        btn.setAttribute("title", label);
+
+        frappe.show_alert({
+            message: !wasActive
+                ? __("Added to wishlist")
+                : __("Removed from wishlist"),
+            indicator: "green"
+        });
+
+    } catch (error) {
+        console.error("Wishlist operation failed:", error);
+
+        frappe.msgprint({
+            title: __("Wishlist"),
+            message: __(
+                "Unable to update your wishlist. Please try again."
+            ),
+            indicator: "red"
+        });
+
+    } finally {
+        btn.disabled = false;
+        delete btn.dataset.loading;
+    }
+});
 }
 
 /* Catalog cart — calls webshop update_cart for the [🛒] button */
@@ -949,9 +1034,22 @@ function initCatalogCart() {
 			const itemCode = card.dataset.itemCode;
 
 			if (frappe.session.user === "Guest") {
-				if (localStorage) localStorage.setItem("last_visited", window.location.pathname + window.location.search);
-				window.location.href = "/login?redirect-to=" + encodeURIComponent(window.location.pathname + window.location.search);
-				return;
+							if (localStorage) {
+											localStorage.setItem("last_visited", window.location.pathname);
+							}
+
+							const redirectAction = getCustomerAuthAction();
+							if (redirectAction) {
+											// Use the destination configured in Webshop Settings.
+											window.location.href = redirectAction;
+							} else {
+											// Fall back to the standard Frappe login page.
+											window.location.href =
+															"/login?redirect-to=" +
+															encodeURIComponent(window.location.pathname);
+							}
+
+							return;
 			}
 
 			// Disable briefly to prevent double-click
@@ -969,8 +1067,59 @@ function initCatalogCart() {
 						btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
 						setTimeout(function () {
 							btn.innerHTML = icon;
+							btn.classList.add("active");
+							const activeIcon = btn.querySelector(".dalali-cart-icon");
+							if (activeIcon) {
+								activeIcon.setAttribute("fill", btn.classList.contains("active") ? "currentColor" : "none");
+							}
 							btn.classList.remove("added");
 						}, 1600);
+					}
+				},
+				error: function () {
+					btn.disabled = false;
+					// Not logged in → redirect
+					window.location.href =
+						"/login?redirect-to=" + encodeURIComponent(window.location.pathname + window.location.search);
+				},
+			});
+		});
+	});
+	document.querySelectorAll(".dalali-cat-btn-buy").forEach(function (btn) {
+		btn.addEventListener("click", function () {
+			const card = btn.closest(".dalali-cat-card");
+			if (!card) return;
+			const itemCode = card.dataset.itemCode;
+
+			if (frappe.session.user === "Guest") {
+							if (localStorage) {
+											localStorage.setItem("last_visited", window.location.pathname);
+							}
+
+							const redirectAction = getCustomerAuthAction();
+							if (redirectAction) {
+											// Use the destination configured in Webshop Settings.
+											window.location.href = redirectAction;
+							} else {
+											// Fall back to the standard Frappe login page.
+											window.location.href =
+															"/login?redirect-to=" +
+															encodeURIComponent(window.location.pathname);
+							}
+
+							return;
+			}
+
+			// Disable briefly to prevent double-click
+			btn.disabled = true;
+
+			frappe.call({
+				method: "webshop.webshop.shopping_cart.cart.update_cart",
+				args: { item_code: itemCode, qty: 1 },
+				callback: function (r) {
+					btn.disabled = false;
+					if (!r.exc) {
+							window.location.href="/cart"
 					}
 				},
 				error: function () {

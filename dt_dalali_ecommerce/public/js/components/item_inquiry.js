@@ -2,10 +2,7 @@
 let d = null
 frappe.ready(() => {
 	const path = window.location.pathname;
-
-	if (!path.startsWith("/products/")) {
-					return;
-	}
+	
 	d = new frappe.ui.Dialog({
 		title: __('Contact Us'),
 		fields: [
